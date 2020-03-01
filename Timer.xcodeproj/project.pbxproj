@@ -12,6 +12,7 @@
 		71CF1977240BEE10006EB9E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CF1975240BEE10006EB9E0 /* Main.storyboard */; };
 		71CF1979240BEE10006EB9E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CF1978240BEE10006EB9E0 /* Assets.xcassets */; };
 		71CF197C240BEE10006EB9E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CF197A240BEE10006EB9E0 /* LaunchScreen.storyboard */; };
+		71CF1984240BF7D8006EB9E0 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		71CF1978240BEE10006EB9E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71CF197B240BEE10006EB9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CF197D240BEE10006EB9E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				71CF1971240BEE10006EB9E0 /* AppDelegate.swift */,
 				71CF1973240BEE10006EB9E0 /* ViewController.swift */,
 				71CF1975240BEE10006EB9E0 /* Main.storyboard */,
+				71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */,
 				71CF1978240BEE10006EB9E0 /* Assets.xcassets */,
 				71CF197A240BEE10006EB9E0 /* LaunchScreen.storyboard */,
 				71CF197D240BEE10006EB9E0 /* Info.plist */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71CF1974240BEE10006EB9E0 /* ViewController.swift in Sources */,
+				71CF1984240BF7D8006EB9E0 /* NewProjectViewController.swift in Sources */,
 				71CF1972240BEE10006EB9E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
