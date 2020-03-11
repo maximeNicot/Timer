@@ -78,7 +78,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Overview" id="n0N-ui-eKa">
-                                        <barButtonItem key="leftBarButtonItem" title="About" id="Pyi-6v-dfi"/>
+                                        <barButtonItem key="leftBarButtonItem" title="About" id="Pyi-6v-dfi">
+                                            <connections>
+                                                <segue destination="FUV-rP-BsP" kind="show" id="Nkl-at-XlH"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="pG7-89-IXP"/>
                                     </navigationItem>
                                 </items>
@@ -90,7 +94,7 @@
                                     <constraint firstAttribute="height" constant="44" id="Uor-lx-vww"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="NewProject" id="1qV-T9-gPU">
+                                    <barButtonItem title="New Project" id="1qV-T9-gPU">
                                         <connections>
                                             <segue destination="LNm-EQ-tIi" kind="show" id="Bl0-h8-BNE"/>
                                         </connections>
@@ -145,6 +149,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-387" y="-463"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="5Lr-EK-RUq">
+            <objects>
+                <tableViewController id="FUV-rP-BsP" customClass="TableViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="c9H-5C-86h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="hbg-OC-GhD">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Overview" id="Tr1-E1-cTV">
+                                    <barButtonItem key="leftBarButtonItem" title="About" id="IHx-RY-pPL"/>
+                                    <barButtonItem key="rightBarButtonItem" title="Edit" id="DUT-Tz-fSH"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pkz-Qq-Zbd">
+                            <rect key="frame" x="0.0" y="116" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="New Project" id="e3l-cr-3La"/>
+                            </items>
+                        </toolbar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TC2-Rp-Beo">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TC2-Rp-Beo" id="PvW-90-PB5">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FUV-rP-BsP" id="ms1-8B-IRQ"/>
+                            <outlet property="delegate" destination="FUV-rP-BsP" id="JX0-R1-gve"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ouj-4m-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-515" y="-1154"/>
         </scene>
     </scenes>
 </document>
