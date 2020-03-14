@@ -168,28 +168,25 @@
                                 </navigationItem>
                             </items>
                         </navigationBar>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pkz-Qq-Zbd">
-                            <rect key="frame" x="0.0" y="116" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem title="New Project" id="e3l-cr-3La"/>
-                            </items>
-                        </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TC2-Rp-Beo">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" id="T17-Yu-fMH" customClass="CustomTableViewCell" customModule="Timer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TC2-Rp-Beo" id="PvW-90-PB5">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T17-Yu-fMH" id="cVy-3l-hcU">
+                                    <rect key="frame" x="0.0" y="0.0" width="561" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="FUV-rP-BsP" id="ms1-8B-IRQ"/>
+                            <outlet property="dataSource" destination="FUV-rP-BsP" id="PYw-7c-zBq"/>
                             <outlet property="delegate" destination="FUV-rP-BsP" id="JX0-R1-gve"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="c9H-5C-86h" id="J6p-aF-P6c"/>
+                        <outlet property="viewTable" destination="c9H-5C-86h" id="mOi-g2-xqI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouj-4m-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -2,50 +2,115 @@
 //  TableViewController.swift
 //  Timer
 //
-//  Created by Antoine NICOT on 01/03/2020.
+//  Created by Antoine NICOT on 14/03/2020.
 //  Copyright © 2020 maxime. All rights reserved.
 //
 
 import UIKit
 
 class TableViewController: UITableViewController {
-
+    var data = ["Orleans", "Rys","Jigoula"]
+    var dataTimer = ["0","0","0"]
+    var timer = NSTimer()
+    var chrono : Int = 0
+    var oneTimer = true
+    var myIndexPathRow = 0
+    var myIndex = 0
+    
+    @IBOutlet var viewTable: UITableView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        print(data.count)
+        //self.tableView.delegate = self
+        //self.tableView.dataSource = self
+        
+        tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
+      
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return (data.count)
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
+        
+        print(indexPath.row)
+        cell.labelTimer.text = dataTimer[indexPath.row]
+        cell.label.text = data[indexPath.row]
 
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        myIndex = indexPath.row
+        data[indexPath.row] = "Orlins"
+        
+        if(oneTimer){
+            self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
+            oneTimer = false
+        }
+        myIndexPathRow = indexPath.row
+        
+        tableView.reloadData()
+    }
+    
+    
+    internal func incrementer(){
+        
+        chrono += 1
+        dataTimer[myIndexPathRow] = String(chrono)
+        tableView.reloadData()
+    }
+
+    
+    
+    /*@IBAction func quickStartAction(sender: AnyObject) {
+        
+        
+        if(oneTimer){
+            self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
+            oneTimer = false
+        }
+        
+    }
+    
+    @IBOutlet weak var pause: UIButton!
+    @IBAction func pause(sender: AnyObject) {
+        oneTimer = true
+        timer.invalidate()
+    }
+    
+    @IBAction func stop(sender: AnyObject) {
+        chrono = 0
+        labelTimer.text = String(chrono)
+        oneTimer = true
+        timer.invalidate()
+    }
+    
+    internal func incrementer(){
+        chrono += 1
+        labelTimer.text = "\(chrono)"
+    }*/
+
+    
+    
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var oneTimer = true
     
     @IBAction func quickStartAction(sender: AnyObject) {
-         print("Hello world")
+        
         
         if(oneTimer){
         self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
