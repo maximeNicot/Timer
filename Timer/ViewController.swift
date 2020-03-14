@@ -8,47 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    @IBOutlet weak var quickStart: UIButton!
-    @IBOutlet weak var labelTimer: UILabel!
+class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
+  
+    @IBOutlet weak var tableView: UITableView!
 
-    var timer = NSTimer()
-    var chrono : Int = 0
-    var oneTimer = true
+    var data = ["All Tasks" ,"Single Task"]
+    var dataTimer = ["0","0"]
+  
     
-    @IBAction func quickStartAction(sender: AnyObject) {
         
-        
-        if(oneTimer){
-        self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
-            oneTimer = false
-        }
-        
-    }
-    
-    @IBOutlet weak var pause: UIButton!
-    @IBAction func pause(sender: AnyObject) {
-        oneTimer = true
-        timer.invalidate()
-    }
-    
-    @IBAction func stop(sender: AnyObject) {
-        chrono = 0
-        labelTimer.text = String(chrono)
-        oneTimer = true
-        timer.invalidate()
-    }
-    
-    internal func incrementer(){
-        chrono += 1
-        labelTimer.text = "\(chrono)"
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -57,7 +32,35 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
    
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(data.count)
+        return (data.count)
+    }
+    
+    
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
+        
+        print(indexPath.row)
+        cell.labelTimer.text = dataTimer[indexPath.row]
+        cell.label.text = data[indexPath.row]
+        
+        return cell
+    }
+    
+     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
+        
+        currentCell.activerTimer()
+    }
 
 }
 

@@ -11,11 +11,7 @@ import UIKit
 class TableViewController: UITableViewController {
     var data = ["Orleans", "Rys","Jigoula"]
     var dataTimer = ["0","0","0"]
-    var timer = NSTimer()
-    var chrono : Int = 0
-    var oneTimer = true
-    var myIndexPathRow = 0
-    var myIndex = 0
+   
     
     @IBOutlet var viewTable: UITableView!
    
@@ -50,7 +46,6 @@ class TableViewController: UITableViewController {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
-        print(indexPath.row)
         cell.labelTimer.text = dataTimer[indexPath.row]
         cell.label.text = data[indexPath.row]
 
@@ -58,55 +53,19 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        myIndex = indexPath.row
-        data[indexPath.row] = "Orlins"
         
-        if(oneTimer){
-            self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
-            oneTimer = false
-        }
-        myIndexPathRow = indexPath.row
+        //data[indexPath.row] = "Orlins"
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
-        tableView.reloadData()
-    }
-    
-    
-    internal func incrementer(){
+        currentCell.activerTimer()
         
-        chrono += 1
-        dataTimer[myIndexPathRow] = String(chrono)
-        tableView.reloadData()
-    }
-
-    
-    
-    /*@IBAction func quickStartAction(sender: AnyObject) {
-        
-        
-        if(oneTimer){
-            self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
-            oneTimer = false
+        //arefaire c'est nul
+        if(currentCell.segueBrochure){
+            performSegueWithIdentifier("segueBrochure", sender: nil)
         }
         
     }
     
-    @IBOutlet weak var pause: UIButton!
-    @IBAction func pause(sender: AnyObject) {
-        oneTimer = true
-        timer.invalidate()
-    }
-    
-    @IBAction func stop(sender: AnyObject) {
-        chrono = 0
-        labelTimer.text = String(chrono)
-        oneTimer = true
-        timer.invalidate()
-    }
-    
-    internal func incrementer(){
-        chrono += 1
-        labelTimer.text = "\(chrono)"
-    }*/
 
     
     
