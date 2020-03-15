@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class CustomTableViewCell: UITableViewCell {
 
@@ -21,6 +22,9 @@ class CustomTableViewCell: UITableViewCell {
         }
     }
     
+    var identifier = 1
+    var myDefaults = NSUserDefaults.standardUserDefaults()
+   
     var timer = NSTimer()
     var chrono : Int = 0
     var oneTimer = true
@@ -29,6 +33,13 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+       
+        labelTimer.text = String(chrono)
+    }
+    
+    func starter(){
+        chrono = myDefaults.integerForKey("keyChrono" + String(identifier))
+        labelTimer.text = String(chrono)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -57,8 +68,9 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     internal func incrementer(){
-        
+        chrono = myDefaults.integerForKey("keyChrono" + String(identifier))
         chrono += 1
+        myDefaults.setValue(chrono, forKey: "keyChrono" + String(identifier))
         labelTimer.text = String(chrono)
         
     }

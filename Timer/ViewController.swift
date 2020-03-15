@@ -14,8 +14,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
 
     var data = ["All Tasks" ,"Single Task"]
     var dataTimer = ["0","0"]
-  
-    
         
     
     override func viewDidLoad() {
@@ -24,6 +22,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -38,7 +37,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
    
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(data.count)
+        
         return (data.count)
     }
     
@@ -47,15 +46,19 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
-        print(indexPath.row)
-        cell.labelTimer.text = dataTimer[indexPath.row]
+        
+        dataTimer[indexPath.row] = cell.labelTimer.text!
+        //cell.labelTimer.text = dataTimer[indexPath.row]
         cell.label.text = data[indexPath.row]
         
+        cell.identifier = indexPath.row + 99
+        cell.starter()
+        
         return cell
+        
     }
     
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         

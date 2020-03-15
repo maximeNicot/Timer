@@ -46,9 +46,13 @@ class TableViewController: UITableViewController {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
-        cell.labelTimer.text = dataTimer[indexPath.row]
+        dataTimer[indexPath.row] = cell.labelTimer.text!
+        //cell.labelTimer.text = dataTimer[indexPath.row]
         cell.label.text = data[indexPath.row]
 
+        cell.identifier = indexPath.row + 100
+        cell.starter()
+        
         return cell
     }
     
