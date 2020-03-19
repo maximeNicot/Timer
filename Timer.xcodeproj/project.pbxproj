@@ -17,6 +17,7 @@
 		71D07757241D359200A8D2DD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D07755241D359200A8D2DD /* CustomTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		71D07758241D359200A8D2DD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D07756241D359200A8D2DD /* CustomTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		71D0775A241D7EF500A8D2DD /* BrochureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D07759241D7EF500A8D2DD /* BrochureController.swift */; settings = {ASSET_TAGS = (); }; };
+		71D32876241EB38F005FB448 /* NewTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D32875241EB38F005FB448 /* NewTaskController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		71D07755241D359200A8D2DD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		71D07756241D359200A8D2DD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		71D07759241D7EF500A8D2DD /* BrochureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrochureController.swift; sourceTree = "<group>"; };
+		71D32875241EB38F005FB448 /* NewTaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				71D07759241D7EF500A8D2DD /* BrochureController.swift */,
 				71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */,
 				71D0774F241D24CC00A8D2DD /* TableViewController.swift */,
+				71D32875241EB38F005FB448 /* NewTaskController.swift */,
 				71D07755241D359200A8D2DD /* CustomTableViewCell.swift */,
 				71D07756241D359200A8D2DD /* CustomTableViewCell.xib */,
 				71CF1978240BEE10006EB9E0 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				71CF1974240BEE10006EB9E0 /* ViewController.swift in Sources */,
 				71D07757241D359200A8D2DD /* CustomTableViewCell.swift in Sources */,
 				71CF1984240BF7D8006EB9E0 /* NewProjectViewController.swift in Sources */,
+				71D32876241EB38F005FB448 /* NewTaskController.swift in Sources */,
 				71CF1972240BEE10006EB9E0 /* AppDelegate.swift in Sources */,
 				71D07750241D24CC00A8D2DD /* TableViewController.swift in Sources */,
 				71D0775A241D7EF500A8D2DD /* BrochureController.swift in Sources */,

@@ -174,6 +174,76 @@
             </objects>
             <point key="canvasLocation" x="-387" y="-463"/>
         </scene>
+        <!--NewTaskController-->
+        <scene sceneID="Nln-uz-mLM">
+            <objects>
+                <viewController id="cFK-IO-u7c" userLabel="NewTaskController" customClass="NewTaskController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1yv-de-rOr"/>
+                        <viewControllerLayoutGuide type="bottom" id="MHC-aP-cJi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zWf-1C-A2g">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-rt-kvj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="New Task" id="bMG-Hv-Jyl">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="nuv-Pr-FK0">
+                                            <connections>
+                                                <segue destination="FUV-rP-BsP" kind="show" identifier="segueSave" id="DfA-Ll-Z2V"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Nge-PO-CAB">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CO5-kz-byA">
+                                                <rect key="frame" x="546" y="7" width="34" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveButton:" destination="cFK-IO-u7c" eventType="touchUpInside" id="Mv7-W3-yma"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEG-7h-7ib">
+                                <rect key="frame" x="31" y="76" width="528" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0LP-O4-K6l">
+                                <rect key="frame" x="31" y="212" width="528" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label=""/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoG-kt-UWS">
+                                <rect key="frame" x="31" y="163" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="3yR-rt-kvj" secondAttribute="trailing" constant="-20" id="Ajd-tA-M8W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lEG-7h-7ib" secondAttribute="trailing" constant="21" id="C7C-Cz-mMU"/>
+                            <constraint firstItem="3yR-rt-kvj" firstAttribute="leading" secondItem="zWf-1C-A2g" secondAttribute="leadingMargin" constant="-20" id="Eld-4d-Xab"/>
+                            <constraint firstItem="0LP-O4-K6l" firstAttribute="leading" secondItem="zWf-1C-A2g" secondAttribute="leadingMargin" constant="11" id="SFn-5N-JrS"/>
+                            <constraint firstItem="lEG-7h-7ib" firstAttribute="leading" secondItem="zWf-1C-A2g" secondAttribute="leadingMargin" constant="11" id="Vrl-gz-b2A"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0LP-O4-K6l" secondAttribute="trailing" constant="21" id="wgQ-UV-hOL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="lEG-7h-7ib" id="wfQ-t6-I2N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nRo-mO-qgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1697" y="-452"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="5Lr-EK-RUq">
             <objects>
@@ -196,6 +266,17 @@
                                 </navigationItem>
                             </items>
                         </navigationBar>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="15H-V8-Zo0">
+                            <rect key="frame" x="0.0" y="116" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="+" id="u41-VT-WAg">
+                                    <connections>
+                                        <segue destination="cFK-IO-u7c" kind="show" id="uJ4-DS-jaG"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" id="T17-Yu-fMH" customClass="CustomTableViewCell" customModule="Timer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
@@ -224,6 +305,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ukF-Rf-2IN"/>
-        <segue reference="K3k-2x-s1A"/>
+        <segue reference="DfA-Ll-Z2V"/>
     </inferredMetricsTieBreakers>
 </document>

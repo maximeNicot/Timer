@@ -51,7 +51,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         //cell.labelTimer.text = dataTimer[indexPath.row]
         cell.label.text = data[indexPath.row]
         
-        cell.identifier = indexPath.row + 99
+        cell.identifier = indexPath.row + 9999
         cell.starter()
         
         return cell

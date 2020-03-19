@@ -9,9 +9,11 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-    var data = ["Orleans", "Rys","Jigoula"]
-    var dataTimer = ["0","0","0"]
+    var data = ["Jigoula","Paul"]
+    var dataTimer = ["0","0"]
    
+    var dataDefaults = NSUserDefaults.standardUserDefaults()
+    var dataTimerDefaults = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet var viewTable: UITableView!
    
@@ -23,6 +25,13 @@ class TableViewController: UITableViewController {
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
       
+        if(dataDefaults.stringArrayForKey("keyData3") != nil){
+        data = dataDefaults.stringArrayForKey("keyData3")!
+        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer3")!
+        //tableView.reloadData()
+        }
+        dataDefaults.setValue(data, forKey: "keyData3")
+        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer3")
         
     }
 
@@ -38,7 +47,10 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (data.count)
+        
+        let nbRow = dataTimerDefaults.stringArrayForKey("keyDataTimer3")!.count
+        
+        return (nbRow)
     }
 
     
@@ -46,8 +58,10 @@ class TableViewController: UITableViewController {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
+        
         dataTimer[indexPath.row] = cell.labelTimer.text!
         //cell.labelTimer.text = dataTimer[indexPath.row]
+        
         cell.label.text = data[indexPath.row]
 
         cell.identifier = indexPath.row + 100
