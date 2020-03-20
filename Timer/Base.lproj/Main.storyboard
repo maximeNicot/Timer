@@ -119,7 +119,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="pG7-89-IXP">
                                             <connections>
-                                                <segue destination="SPP-wy-Dsk" kind="show" id="hJZ-PB-UVz"/>
+                                                <segue destination="SPP-wy-Dsk" kind="show" identifier="segueMain" id="hJZ-PB-UVz"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -201,18 +201,27 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Create new task"/>
+                                        <connections>
+                                            <action selector="CreateNewTask:" destination="SPP-wy-Dsk" eventType="touchUpInside" id="S71-xp-CUU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LI-lz-fgF">
                                         <rect key="frame" x="52" y="62" width="502" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add to task"/>
+                                        <connections>
+                                            <action selector="AddToTask:" destination="SPP-wy-Dsk" eventType="touchUpInside" id="5vb-Yb-U4e"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYF-4n-u3r">
                                         <rect key="frame" x="52" y="100" width="502" height="30"/>
                                         <color key="backgroundColor" red="0.7880760732323232" green="0.012598633428034824" blue="0.17990902926394389" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="Delete:" destination="SPP-wy-Dsk" eventType="touchUpInside" id="Qli-NH-D1d"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uH2-xV-ZzT">
                                         <rect key="frame" x="49" y="169" width="502" height="30"/>
@@ -220,7 +229,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="3c0-i2-Jg1"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="segueMain" id="3c0-i2-Jg1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -249,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5x3-ep-QXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="253"/>
+            <point key="canvasLocation" x="-400" y="411"/>
         </scene>
         <!--NewTaskController-->
         <scene sceneID="Nln-uz-mLM">

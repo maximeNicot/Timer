@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 
+
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imagePausePlay: UIImageView!
@@ -16,25 +17,26 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var labelTimer: UILabel!
     @IBOutlet weak var boutonBrochure: UIButton!
     
-    @IBAction func OnClick(sender: AnyObject) {
-        if(!segueBrochure){
-            segueBrochure = true
-        }
-    }
     
+    var delegate:CellDelegate!
     var identifier = 1
     var myDefaults = NSUserDefaults.standardUserDefaults()
    
     var timer = NSTimer()
     var chrono : Int = 0
     var oneTimer = true
-    var segueBrochure = false
    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
        
         labelTimer.text = String(chrono)
+    }
+    
+    @IBAction func OnClick(sender: AnyObject) {
+        
+        self.delegate.SegueFromCell(mydata: identifier)
+        
     }
     
     func starter(){
@@ -45,7 +47,7 @@ class CustomTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        
     }
     
     func activerTimer(){

@@ -8,15 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, CellDelegate{
   
     
     @IBOutlet weak var tableView: UITableView!
 
     
-    
+    //on affiche a partir des data
     var data = [String]()
     var dataTimer = [String]()
+    
     var dataQuickTask = [String]()
     var dataQuickTaskTimer = [String]()
     var dataQuickTaskDefaults = NSUserDefaults.standardUserDefaults()
@@ -26,9 +27,9 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(dataQuickTaskDefaults.stringArrayForKey("keyQuickTask2") != nil){
-            dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask2")!
-            dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer2")!
+        if(dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3") != nil){
+            dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3")!
+            dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
             
             for i in dataQuickTask{
                 data.append(i)
@@ -36,7 +37,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             for i in dataQuickTaskTimer{
                 dataTimer.append(i)
             }
-            //tableView.reloadData()
         }
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
@@ -48,10 +48,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     @IBAction func quickStart(sender: AnyObject) {
         dataQuickTask.append("Quick Task" + String(dataQuickTask.count))
         dataQuickTaskTimer.append("0")
-        dataQuickTaskDefaults.setValue(dataQuickTask, forKey: "keyQuickTask2")
-        dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer2")
+        dataQuickTaskDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
+        dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
         
-        data.append("Quick Task" + String(dataQuickTask.count))
+        data.append("Quick Task " + String(dataQuickTask.count + 1))
         dataTimer.append("0")
         
         tableView.reloadData()
@@ -69,7 +69,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
    
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(data.count)
+        
         return (data.count)
     }
     
@@ -86,7 +86,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         cell.identifier = indexPath.row + 9999
         cell.starter()
         //cell.activerTimer()
-        
+        cell.delegate = self
+       
         return cell
         
     }
@@ -96,6 +97,13 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         currentCell.activerTimer()
+        
+    }
+    
+    //protocol
+    func SegueFromCell(mydata dataobject: AnyObject){
+        //comment get la value ???
+        self.performSegueWithIdentifier("segueMain", sender: dataobject)
     }
 
 }

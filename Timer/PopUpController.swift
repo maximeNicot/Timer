@@ -10,10 +10,18 @@ import UIKit
 
 class PopUpController: UIViewController {
 
+    
+    var dataQuickTask = [String]()
+    var dataQuickTaskTimer = [String]()
+    var dataQuickTaskDefaults = NSUserDefaults.standardUserDefaults()
+    var dataQuickTaskTimerDefaults = NSUserDefaults.standardUserDefaults()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3")!
+        dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +30,18 @@ class PopUpController: UIViewController {
     }
     
 
+    @IBAction func CreateNewTask(sender: AnyObject) {
+        print(sender)
+    }
+    
+    @IBAction func AddToTask(sender: AnyObject) {
+    }
+    
+    
+    @IBAction func Delete(sender: AnyObject) {
+        
+        
+    }
 
 
 }

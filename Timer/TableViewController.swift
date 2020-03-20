@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, CellDelegate {
     var data = ["Jigoula","Paul"]
     var dataTimer = ["0","0"]
    
@@ -63,10 +63,10 @@ class TableViewController: UITableViewController {
         //cell.labelTimer.text = dataTimer[indexPath.row]
         
         cell.label.text = data[indexPath.row]
-
+        
         cell.identifier = indexPath.row + 100
         cell.starter()
-        
+        cell.delegate = self
         return cell
     }
     
@@ -75,14 +75,12 @@ class TableViewController: UITableViewController {
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         currentCell.activerTimer()
-        
-        //arefaire c'est nul
-        if(currentCell.segueBrochure){
-            performSegueWithIdentifier("segueBrochure", sender: nil)
-        }
-        
     }
     
+    //protocol
+    func SegueFromCell(mydata dataobject: AnyObject){
+        self.performSegueWithIdentifier("segueBrochure", sender: dataobject)
+    }
 
     
     
