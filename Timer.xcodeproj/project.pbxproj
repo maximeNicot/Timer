@@ -13,6 +13,7 @@
 		71CF1979240BEE10006EB9E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CF1978240BEE10006EB9E0 /* Assets.xcassets */; };
 		71CF197C240BEE10006EB9E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CF197A240BEE10006EB9E0 /* LaunchScreen.storyboard */; };
 		71CF1984240BF7D8006EB9E0 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		71CF65A22424E6C300F43EB9 /* PopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF65A12424E6C300F43EB9 /* PopUpController.swift */; settings = {ASSET_TAGS = (); }; };
 		71D07750241D24CC00A8D2DD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D0774F241D24CC00A8D2DD /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		71D07757241D359200A8D2DD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D07755241D359200A8D2DD /* CustomTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		71D07758241D359200A8D2DD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D07756241D359200A8D2DD /* CustomTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
@@ -29,6 +30,7 @@
 		71CF197B240BEE10006EB9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CF197D240BEE10006EB9E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
+		71CF65A12424E6C300F43EB9 /* PopUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpController.swift; sourceTree = "<group>"; };
 		71D0774F241D24CC00A8D2DD /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		71D07755241D359200A8D2DD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		71D07756241D359200A8D2DD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				71CF197A240BEE10006EB9E0 /* LaunchScreen.storyboard */,
 				71CF1975240BEE10006EB9E0 /* Main.storyboard */,
 				71CF1973240BEE10006EB9E0 /* ViewController.swift */,
+				71CF65A12424E6C300F43EB9 /* PopUpController.swift */,
 				71D07759241D7EF500A8D2DD /* BrochureController.swift */,
 				71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */,
 				71D0774F241D24CC00A8D2DD /* TableViewController.swift */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CF65A22424E6C300F43EB9 /* PopUpController.swift in Sources */,
 				71CF1974240BEE10006EB9E0 /* ViewController.swift in Sources */,
 				71D07757241D359200A8D2DD /* CustomTableViewCell.swift in Sources */,
 				71CF1984240BF7D8006EB9E0 /* NewProjectViewController.swift in Sources */,

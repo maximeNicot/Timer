@@ -95,7 +95,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="ViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -117,7 +117,11 @@
                                                 <segue destination="FUV-rP-BsP" kind="show" id="Nkl-at-XlH"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="pG7-89-IXP"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="pG7-89-IXP">
+                                            <connections>
+                                                <segue destination="SPP-wy-Dsk" kind="show" id="hJZ-PB-UVz"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -138,6 +142,9 @@
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqF-YV-9fV">
                                 <rect key="frame" x="143" y="44" width="295" height="30"/>
                                 <state key="normal" title="Quick Start"/>
+                                <connections>
+                                    <action selector="quickStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ufn-jj-iHh"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8FT-AE-4KC">
                                 <rect key="frame" x="0.0" y="82" width="600" height="383"/>
@@ -172,7 +179,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-387" y="-463"/>
+            <point key="canvasLocation" x="-415" y="-445"/>
+        </scene>
+        <!--PopUpController-->
+        <scene sceneID="8ZY-qM-igN">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="SPP-wy-Dsk" userLabel="PopUpController" customClass="PopUpController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iLn-Bh-5OG"/>
+                        <viewControllerLayoutGuide type="bottom" id="TWx-PP-1pc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t4e-bi-WG0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37D-4h-mLS">
+                                <rect key="frame" x="0.0" y="352" width="600" height="248"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNy-LE-VXK">
+                                        <rect key="frame" x="52" y="24" width="502" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Create new task"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LI-lz-fgF">
+                                        <rect key="frame" x="52" y="62" width="502" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Add to task"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYF-4n-u3r">
+                                        <rect key="frame" x="52" y="100" width="502" height="30"/>
+                                        <color key="backgroundColor" red="0.7880760732323232" green="0.012598633428034824" blue="0.17990902926394389" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Delete"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uH2-xV-ZzT">
+                                        <rect key="frame" x="49" y="169" width="502" height="30"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="3c0-i2-Jg1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BYF-4n-u3r" firstAttribute="leading" secondItem="37D-4h-mLS" secondAttribute="leading" constant="52" id="46s-0m-7ga"/>
+                                    <constraint firstAttribute="trailing" secondItem="MNy-LE-VXK" secondAttribute="trailing" constant="46" id="5cZ-a9-Py6"/>
+                                    <constraint firstAttribute="trailing" secondItem="uH2-xV-ZzT" secondAttribute="trailing" constant="49" id="6mi-UN-rLK"/>
+                                    <constraint firstItem="MNy-LE-VXK" firstAttribute="leading" secondItem="37D-4h-mLS" secondAttribute="leading" constant="52" id="AJY-nA-PU0"/>
+                                    <constraint firstItem="5LI-lz-fgF" firstAttribute="leading" secondItem="37D-4h-mLS" secondAttribute="leading" constant="52" id="Q3l-5n-SgH"/>
+                                    <constraint firstAttribute="trailing" secondItem="BYF-4n-u3r" secondAttribute="trailing" constant="46" id="ccC-EW-HaB"/>
+                                    <constraint firstItem="uH2-xV-ZzT" firstAttribute="leading" secondItem="37D-4h-mLS" secondAttribute="leading" constant="49" id="cha-QZ-6ZE"/>
+                                    <constraint firstAttribute="trailing" secondItem="5LI-lz-fgF" secondAttribute="trailing" constant="46" id="eaR-5N-OAs"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.75" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" label=""/>
+                        <constraints>
+                            <constraint firstItem="37D-4h-mLS" firstAttribute="leading" secondItem="t4e-bi-WG0" secondAttribute="leadingMargin" constant="-20" id="Tbo-Td-1Vd"/>
+                            <constraint firstItem="TWx-PP-1pc" firstAttribute="top" secondItem="37D-4h-mLS" secondAttribute="bottom" id="W9o-YO-BwU"/>
+                            <constraint firstItem="37D-4h-mLS" firstAttribute="top" secondItem="iLn-Bh-5OG" secondAttribute="bottom" constant="332" id="bXR-i1-nzQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="37D-4h-mLS" secondAttribute="trailing" constant="-20" id="z8B-8J-Wgk"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5x3-ep-QXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-426" y="253"/>
         </scene>
         <!--NewTaskController-->
         <scene sceneID="Nln-uz-mLM">
@@ -304,7 +381,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ukF-Rf-2IN"/>
-        <segue reference="DfA-Ll-Z2V"/>
+        <segue reference="3c0-i2-Jg1"/>
+        <segue reference="Nkl-at-XlH"/>
     </inferredMetricsTieBreakers>
 </document>

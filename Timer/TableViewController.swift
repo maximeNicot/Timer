@@ -72,7 +72,6 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        //data[indexPath.row] = "Orlins"
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         currentCell.activerTimer()
