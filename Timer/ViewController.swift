@@ -16,8 +16,12 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     //on affiche a partir des data
     var data = [String]()
-    var dataTask = ["Single Task", "All Tasks"]
-    var dataDossier = ["Axari Graphics", "Website Ions"]
+    
+    //Pour page blanche et dossier
+    var dataPageBlanche = ["Single Tasks" , "All tasks"]
+    var dataDossier = [String]()
+    var dataPageBlancheDefaults = NSUserDefaults.standardUserDefaults()
+    var dataDossierDefaults = NSUserDefaults.standardUserDefaults()
     
     var dataTimer = [String]()
     
@@ -29,7 +33,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("le viewcontroller principal démarre")
         if(dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3") != nil){
             dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3")!
             dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
@@ -41,6 +45,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 dataTimer.append(i)
             }
         }
+        if(dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche") != nil){
+            dataPageBlanche = dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche")!
+        }
+        
+        if(dataDossierDefaults.stringArrayForKey("keyDossier1") != nil){
+            dataDossier = dataDossierDefaults.stringArrayForKey("keyDossier1")!
+        }
+        
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.delegate = self
@@ -84,7 +96,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             return (data.count)
         }
         if(section == 1){
-            return (dataTask.count)
+            return (dataPageBlanche.count)
         }
         if(section == 2){
             return (dataDossier.count)
@@ -109,7 +121,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         if(indexPath.section == 1){
             
-            cell.label.text = dataTask[indexPath.row]
+            cell.label.text = dataPageBlanche[indexPath.row]
             cell.identifier = indexPath.row + 8000
             cell.starter()
             cell.pageBlanche()
@@ -120,7 +132,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(indexPath.section == 2){
             
             cell.label.text = dataDossier[indexPath.row]
-            cell.identifier = indexPath.row + 8000
+            cell.identifier = indexPath.row + 7000
             cell.starter()
             cell.dossier()
             

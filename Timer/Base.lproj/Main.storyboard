@@ -30,7 +30,11 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" id="qQl-ud-Sx1"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="iT7-KL-TZn"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="iT7-KL-TZn">
+                                            <connections>
+                                                <action selector="Save:" destination="LNm-EQ-tIi" id="vuL-yS-GaD"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -53,6 +57,9 @@
                             <constraint firstItem="0Qa-yz-nY7" firstAttribute="leading" secondItem="wUg-7N-Vj2" secondAttribute="leadingMargin" constant="-20" id="RwX-8q-lhI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="in7-hI-oyu" id="FCx-Vw-9cV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MmV-YW-4mE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -147,7 +154,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8FT-AE-4KC">
-                                <rect key="frame" x="0.0" y="82" width="600" height="383"/>
+                                <rect key="frame" x="0.0" y="82" width="600" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ipE-b0-vJy" customClass="CustomTableViewCell" customModule="Timer" customModuleProvider="target">
@@ -390,7 +397,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3c0-i2-Jg1"/>
+        <segue reference="qQl-ud-Sx1"/>
         <segue reference="Nkl-at-XlH"/>
     </inferredMetricsTieBreakers>
 </document>

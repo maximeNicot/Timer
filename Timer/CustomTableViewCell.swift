@@ -31,15 +31,14 @@ class CustomTableViewCell: UITableViewCell {
    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
        
         labelTimer.text = String(chrono)
     }
     
+    //click sur le bouton a droite des cells
     @IBAction func OnClick(sender: AnyObject) {
-        
         self.delegate.SegueFromCell(mydata: identifier)
-        
+         
     }
     
     func starter(){
@@ -48,6 +47,7 @@ class CustomTableViewCell: UITableViewCell {
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
+       
         super.setSelected(selected, animated: animated)
 
         

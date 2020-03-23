@@ -10,6 +10,24 @@ import UIKit
 
 class NewProjectViewController: UIViewController {
 
+    var dataDossier = [String]()
+    var dataDossierDefaults = NSUserDefaults.standardUserDefaults()
+    
+    @IBOutlet weak var textField: UITextField!
+    
+    @IBAction func Save(sender: AnyObject) {
+        
+        if(dataDossierDefaults.stringArrayForKey("keyDossier1") != nil){
+            dataDossier = dataDossierDefaults.stringArrayForKey("keyDossier1")!
+        }
+        if (textField != nil){
+            dataDossier.append(textField.text!)
+            dataDossierDefaults.setValue(dataDossier, forKey: "keyDossier1")
+            print("projet créé")
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +38,8 @@ class NewProjectViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*
