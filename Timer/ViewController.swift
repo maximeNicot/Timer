@@ -16,6 +16,9 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     //on affiche a partir des data
     var data = [String]()
+    var dataTask = ["Single Task", "All Tasks"]
+    var dataDossier = ["Axari Graphics", "Website Ions"]
+    
     var dataTimer = [String]()
     
     var dataQuickTask = [String]()
@@ -63,13 +66,29 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         // Dispose of any resources that can be recreated.
     }
 
+    
+     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        //blank space
+        let label = UILabel()
+        label.backgroundColor = UIColor.lightGrayColor()
+        return label
+    }
+    
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
    
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if(section == 0){
+            return (data.count)
+        }
+        if(section == 1){
+            return (dataTask.count)
+        }
+        if(section == 2){
+            return (dataDossier.count)
+        }
         return (data.count)
     }
     
@@ -78,15 +97,35 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
-        
+        if(indexPath.section == 0){
         dataTimer[indexPath.row] = cell.labelTimer.text!
-        
         cell.label.text = data[indexPath.row]
         
         cell.identifier = indexPath.row + 9999
         cell.starter()
         //cell.activerTimer()
         cell.delegate = self
+        }
+        
+        if(indexPath.section == 1){
+            
+            cell.label.text = dataTask[indexPath.row]
+            cell.identifier = indexPath.row + 8000
+            cell.starter()
+            cell.pageBlanche()
+            
+            cell.delegate = self
+        }
+        
+        if(indexPath.section == 2){
+            
+            cell.label.text = dataDossier[indexPath.row]
+            cell.identifier = indexPath.row + 8000
+            cell.starter()
+            cell.dossier()
+            
+            cell.delegate = self
+        }
        
         return cell
         

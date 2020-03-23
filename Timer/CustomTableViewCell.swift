@@ -25,6 +25,9 @@ class CustomTableViewCell: UITableViewCell {
     var timer = NSTimer()
     var chrono : Int = 0
     var oneTimer = true
+    
+    var isPageBlanche = false
+    var isDossier = false
    
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,13 +53,18 @@ class CustomTableViewCell: UITableViewCell {
         
     }
     
+    
+    
     func activerTimer(){
         
         if(oneTimer){
             self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
             oneTimer = false
             labelTimer.textColor = UIColor.redColor()
-            imagePausePlay.image = UIImage(named: "ImagePauseRouge")
+            if(!isDossier && !isPageBlanche){
+                imagePausePlay.image = UIImage(named: "ImagePauseRouge")
+            }
+            
             
         }
         
@@ -64,9 +72,21 @@ class CustomTableViewCell: UITableViewCell {
             oneTimer = true
             self.timer.invalidate()
             labelTimer.textColor = UIColor.darkTextColor()
-            imagePausePlay.image = UIImage(named: "ImageTriangle")
+            if(!isDossier && !isPageBlanche){
+                imagePausePlay.image = UIImage(named: "ImageTriangle")
+            }
         }
         
+    }
+    
+    func pageBlanche(){
+        imagePausePlay.image = UIImage(named: "PageBlanche")
+        isPageBlanche = true
+    }
+    
+    func dossier(){
+        imagePausePlay.image = UIImage(named: "Dossier")
+        isDossier = true
     }
     
     internal func incrementer(){
