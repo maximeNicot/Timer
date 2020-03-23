@@ -16,6 +16,7 @@ class PopUpController: UIViewController {
     var dataQuickTaskDefaults = NSUserDefaults.standardUserDefaults()
     var dataQuickTaskTimerDefaults = NSUserDefaults.standardUserDefaults()
     
+    var cellAppelante = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

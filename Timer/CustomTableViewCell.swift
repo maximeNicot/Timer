@@ -56,20 +56,22 @@ class CustomTableViewCell: UITableViewCell {
     func activerTimer(){
         
         if(oneTimer){
+            if(!isDossier && !isPageBlanche){
             self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
             oneTimer = false
             labelTimer.textColor = UIColor.redColor()
-            if(!isDossier && !isPageBlanche){
-                imagePausePlay.image = UIImage(named: "ImagePauseRouge")
+            
+            imagePausePlay.image = UIImage(named: "ImagePauseRouge")
             }
         }
         
         else if(!oneTimer){
+            if(!isDossier && !isPageBlanche){
             oneTimer = true
             self.timer.invalidate()
             labelTimer.textColor = UIColor.darkTextColor()
-            if(!isDossier && !isPageBlanche){
-                imagePausePlay.image = UIImage(named: "ImageTriangle")
+            
+            imagePausePlay.image = UIImage(named: "ImageTriangle")
             }
         }
         

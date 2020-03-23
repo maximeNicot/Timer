@@ -10,15 +10,18 @@ import UIKit
 
 class NewTaskController: UIViewController {
 
+    var identifier = 1
     @IBOutlet weak var textField: UITextField!
     
     @IBOutlet weak var save: UIBarButtonItem!
     
+    @IBOutlet weak var textFieldProject: UITextField!
+    
     @IBAction func saveButton(sender: AnyObject) {
         data.append(textField.text!)
         dataTimer.append("0")
-        dataDefaults.setValue(data, forKey: "keyData3")
-        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer3")
+        dataDefaults.setValue(data, forKey: "keyData3" + String(identifier))
+        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer3" + String(identifier))
         print("Nouvelle cell")
         
     }
@@ -28,13 +31,13 @@ class NewTaskController: UIViewController {
     var dataDefaults = NSUserDefaults.standardUserDefaults()
     var dataTimerDefaults = NSUserDefaults.standardUserDefaults()
     
-    
+    var projectTitre = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        data = dataDefaults.stringArrayForKey("keyData3")!
-        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer3")!
+        textFieldProject.text = projectTitre
+        data = dataDefaults.stringArrayForKey("keyData3" + String(identifier))!
+        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer3" + String(identifier))!
         
         
         // Do any additional setup after loading the view.
@@ -45,5 +48,16 @@ class NewTaskController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "segueSave"){
+            let vc = segue.destinationViewController as! TableViewController
+            vc.identifier = self.identifier
+            vc.monTitre = self.projectTitre
+        }
+        else{
+        }
+        
+    }
 
 }

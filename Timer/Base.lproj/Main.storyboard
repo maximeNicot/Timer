@@ -126,7 +126,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="pG7-89-IXP">
                                             <connections>
-                                                <segue destination="SPP-wy-Dsk" kind="show" identifier="segueMain" id="hJZ-PB-UVz"/>
+                                                <segue destination="SPP-wy-Dsk" kind="show" identifier="seguePopUp" id="hJZ-PB-UVz"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -141,7 +141,7 @@
                                 <items>
                                     <barButtonItem title="New Project" id="1qV-T9-gPU">
                                         <connections>
-                                            <segue destination="LNm-EQ-tIi" kind="show" id="Bl0-h8-BNE"/>
+                                            <segue destination="LNm-EQ-tIi" kind="show" identifier="segueNewProject" id="Bl0-h8-BNE"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -332,6 +332,7 @@
                     </view>
                     <connections>
                         <outlet property="textField" destination="lEG-7h-7ib" id="wfQ-t6-I2N"/>
+                        <outlet property="textFieldProject" destination="0LP-O4-K6l" id="mJ5-AD-igK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRo-mO-qgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,7 +367,7 @@
                             <items>
                                 <barButtonItem title="+" id="u41-VT-WAg">
                                     <connections>
-                                        <segue destination="cFK-IO-u7c" kind="show" id="uJ4-DS-jaG"/>
+                                        <segue destination="cFK-IO-u7c" kind="show" identifier="segueNewTask" id="uJ4-DS-jaG"/>
                                     </connections>
                                 </barButtonItem>
                             </items>
@@ -400,6 +401,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ukF-Rf-2IN"/>
-        <segue reference="Mqd-vQ-m2B"/>
+        <segue reference="Nkl-at-XlH"/>
     </inferredMetricsTieBreakers>
 </document>

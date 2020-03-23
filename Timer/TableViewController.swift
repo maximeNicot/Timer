@@ -9,14 +9,13 @@
 import UIKit
 
 class TableViewController: UITableViewController, CellDelegate {
-    var data = ["Jigoula","Paul"]
-    var dataTimer = ["0","0"]
-   
+    var data = [String]()
+    var dataTimer = [String]()
     var dataDefaults = NSUserDefaults.standardUserDefaults()
     var dataTimerDefaults = NSUserDefaults.standardUserDefaults()
     
-    var identifier = 0
-    var monTitre = "a"
+    var identifier = 1
+    var monTitre = ""
     
     @IBOutlet var viewTable: UITableView!
    
@@ -26,19 +25,19 @@ class TableViewController: UITableViewController, CellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(monTitre)
 
         navigationBar.topItem?.title = monTitre
+        print("identifier" + String(identifier))
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
       
-        if(dataDefaults.stringArrayForKey("keyData3") != nil){
-        data = dataDefaults.stringArrayForKey("keyData3")!
-        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer3")!
+        if(dataDefaults.stringArrayForKey("keyData3" + String(identifier)) != nil){
+        data = dataDefaults.stringArrayForKey("keyData3" + String(identifier))!
+        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer3" + String(identifier))!
         //tableView.reloadData()
         }
-        dataDefaults.setValue(data, forKey: "keyData3")
-        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer3")
+        dataDefaults.setValue(data, forKey: "keyData3" + String(identifier))
+        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer3" + String(identifier))
         
     }
 
@@ -55,7 +54,7 @@ class TableViewController: UITableViewController, CellDelegate {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let nbRow = dataTimerDefaults.stringArrayForKey("keyDataTimer3")!.count
+        let nbRow = dataTimerDefaults.stringArrayForKey("keyDataTimer3" + String(identifier))!.count
         
         return (nbRow)
     }
@@ -84,58 +83,23 @@ class TableViewController: UITableViewController, CellDelegate {
         currentCell.activerTimer()
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "segueNewTask"){
+            let vc = segue.destinationViewController as! NewTaskController
+            vc.identifier = self.identifier
+            vc.projectTitre = self.monTitre
+        }
+        else{
+        }
+        
+    }
+    
     //protocol
     func SegueFromCell(mydata dataobject: AnyObject){
         self.performSegueWithIdentifier("segueBrochure", sender: dataobject)
     }
 
-    
-    
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

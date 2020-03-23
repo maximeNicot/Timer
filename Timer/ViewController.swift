@@ -33,6 +33,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     //pour les segue de tableViewController
     var monTitre = ""
+    var identifierTableViewController = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,6 +154,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         if(currentCell.isDossier){
             self.monTitre = currentCell.label.text!
+            self.identifierTableViewController = indexPath.row * 100 + indexPath.section
             self.performSegueWithIdentifier("segueTableView", sender: self)
         }
         if(currentCell.isPageBlanche){
@@ -168,13 +170,15 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     // lancé avant chaque segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print(segue.identifier)
-        if(segue.identifier == "segueTableViewAbout"){
-            let vc = segue.destinationViewController as! TableViewController
-            vc.monTitre = "test"
-        }
+        
         if(segue.identifier == "segueTableView"){
             let vc = segue.destinationViewController as! TableViewController
+            vc.identifier = self.identifierTableViewController
             vc.monTitre =  self.monTitre
+        }
+        if(segue.identifier == "seguePopUp"){
+            let vc = segue.destinationViewController as! PopUpController
+            vc.cellAppelante = "aa"
         }
         else{
             
@@ -185,7 +189,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     //protocol
     func SegueFromCell(mydata dataobject: AnyObject){
         //comment get la value ???
-        self.performSegueWithIdentifier("segueMain", sender: dataobject)
+        self.performSegueWithIdentifier("seguePopUp", sender: dataobject)
     }
 
 }
