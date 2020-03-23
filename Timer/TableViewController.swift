@@ -15,13 +15,20 @@ class TableViewController: UITableViewController, CellDelegate {
     var dataDefaults = NSUserDefaults.standardUserDefaults()
     var dataTimerDefaults = NSUserDefaults.standardUserDefaults()
     
+    var identifier = 0
+    var monTitre = "a"
+    
     @IBOutlet var viewTable: UITableView!
    
+    
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(data.count)
-        //self.tableView.delegate = self
-        //self.tableView.dataSource = self
+        print(monTitre)
+
+        navigationBar.topItem?.title = monTitre
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
       

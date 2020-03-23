@@ -49,10 +49,8 @@ class CustomTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
        
         super.setSelected(selected, animated: animated)
-
         
     }
-    
     
     
     func activerTimer(){
@@ -64,8 +62,6 @@ class CustomTableViewCell: UITableViewCell {
             if(!isDossier && !isPageBlanche){
                 imagePausePlay.image = UIImage(named: "ImagePauseRouge")
             }
-            
-            
         }
         
         else if(!oneTimer){

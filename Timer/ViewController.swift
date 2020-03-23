@@ -29,7 +29,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     var dataQuickTaskTimer = [String]()
     var dataQuickTaskDefaults = NSUserDefaults.standardUserDefaults()
     var dataQuickTaskTimerDefaults = NSUserDefaults.standardUserDefaults()
-        
+    
+    
+    //pour les segue de tableViewController
+    var monTitre = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,11 +146,39 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
     }
     
+    // click sur la cell
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
-        currentCell.activerTimer()
+        if(currentCell.isDossier){
+            self.monTitre = currentCell.label.text!
+            self.performSegueWithIdentifier("segueTableView", sender: self)
+        }
+        if(currentCell.isPageBlanche){
+            self.performSegueWithIdentifier("segueTableView", sender: self)
+        }
+        else{
+            currentCell.activerTimer()
+        }
+        
+        
+        
+    }
+    // lancé avant chaque segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(segue.identifier)
+        if(segue.identifier == "segueTableViewAbout"){
+            let vc = segue.destinationViewController as! TableViewController
+            vc.monTitre = "test"
+        }
+        if(segue.identifier == "segueTableView"){
+            let vc = segue.destinationViewController as! TableViewController
+            vc.monTitre =  self.monTitre
+        }
+        else{
+            
+        }
         
     }
     

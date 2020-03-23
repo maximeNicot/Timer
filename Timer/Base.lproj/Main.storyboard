@@ -121,7 +121,7 @@
                                     <navigationItem title="Overview" id="n0N-ui-eKa">
                                         <barButtonItem key="leftBarButtonItem" title="About" id="Pyi-6v-dfi">
                                             <connections>
-                                                <segue destination="FUV-rP-BsP" kind="show" id="Nkl-at-XlH"/>
+                                                <segue destination="FUV-rP-BsP" kind="show" identifier="segueTableViewAbout" id="Nkl-at-XlH"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="pG7-89-IXP">
@@ -182,11 +182,12 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="8FT-AE-4KC" id="a8x-mz-emO"/>
+                        <segue destination="FUV-rP-BsP" kind="show" identifier="segueTableView" id="Mqd-vQ-m2B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-415" y="-445"/>
+            <point key="canvasLocation" x="-333" y="-426"/>
         </scene>
         <!--PopUpController-->
         <scene sceneID="8ZY-qM-igN">
@@ -386,6 +387,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="navigationBar" destination="hbg-OC-GhD" id="EA6-db-KwG"/>
                         <outlet property="tableView" destination="c9H-5C-86h" id="J6p-aF-P6c"/>
                         <outlet property="viewTable" destination="c9H-5C-86h" id="mOi-g2-xqI"/>
                         <segue destination="6L8-Qt-1bb" kind="show" identifier="segueBrochure" id="WGY-wi-D1x"/>
@@ -397,7 +399,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qQl-ud-Sx1"/>
-        <segue reference="Nkl-at-XlH"/>
+        <segue reference="ukF-Rf-2IN"/>
+        <segue reference="Mqd-vQ-m2B"/>
     </inferredMetricsTieBreakers>
 </document>
