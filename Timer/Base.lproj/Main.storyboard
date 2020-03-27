@@ -422,7 +422,16 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="ukF-Rf-2IN"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem key="rightBarButtonItem" title="Edit" id="DUT-Tz-fSH"/>
+                                    <barButtonItem key="rightBarButtonItem" style="plain" id="hiS-3L-Qd6">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CcN-W3-td2">
+                                            <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Edit"/>
+                                            <connections>
+                                                <action selector="editClick:" destination="FUV-rP-BsP" eventType="touchUpInside" id="5lA-qn-yLi"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -461,11 +470,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouj-4m-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1067" y="-452"/>
+            <point key="canvasLocation" x="-1511" y="-421"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nkl-at-XlH"/>
-        <segue reference="Cjt-W7-ooZ"/>
+        <segue reference="ukF-Rf-2IN"/>
+        <segue reference="K3k-2x-s1A"/>
     </inferredMetricsTieBreakers>
 </document>

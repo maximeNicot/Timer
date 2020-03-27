@@ -18,17 +18,29 @@ class TableViewController: UITableViewController, CellDelegate {
     var totalChrono = 0
     var identifier = 1
     var monTitre = ""
-    
+    var editingBool = false
     
     
     @IBOutlet var viewTable: UITableView!
    
     
+    @IBAction func editClick(sender: AnyObject) {
+        if(!editingBool){
+            tableView.setEditing(true, animated: true)
+            editingBool = true
+        }
+        else{
+            tableView.setEditing(false, animated: false)
+            editingBool = false
+        }
+        
+    }
     @IBOutlet weak var navigationBar: UINavigationBar!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.setEditing(false, animated: false)
 
         navigationBar.topItem?.title = monTitre
         print("identifier" + String(identifier))
@@ -50,10 +62,7 @@ class TableViewController: UITableViewController, CellDelegate {
         super.didReceiveMemoryWarning()
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -71,7 +80,6 @@ class TableViewController: UITableViewController, CellDelegate {
         
         
         dataTimer[indexPath.row] = cell.labelTimer.text!
-        //cell.labelTimer.text = dataTimer[indexPath.row]
         
         cell.label.text = data[indexPath.row]
         
@@ -109,10 +117,27 @@ class TableViewController: UITableViewController, CellDelegate {
         
     }
    
+
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.None
+    }
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        swap(&data[sourceIndexPath.row], &data[destinationIndexPath.row])
+        swap(&dataTimer[sourceIndexPath.row], &dataTimer[destinationIndexPath.row])
+        dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
+        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
+        tableView.reloadData()
+        }
+    
+    
     //protocol
     func SegueFromCell(mydata dataobject: AnyObject){
         self.performSegueWithIdentifier("segueBrochure", sender: dataobject)
     }
+    
+    
 
 
 }
