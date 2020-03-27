@@ -13,16 +13,17 @@ class PopUpController: UIViewController {
     
     var dataQuickTask = [String]()
     var dataQuickTaskTimer = [String]()
-    var dataQuickTaskDefaults = NSUserDefaults.standardUserDefaults()
-    var dataQuickTaskTimerDefaults = NSUserDefaults.standardUserDefaults()
+    var myDefaults = NSUserDefaults.standardUserDefaults()
     
-    var cellAppelante = ""
+    var identifierCell = 0
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3")!
-        dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
+        
+        
+        dataQuickTask = myDefaults.stringArrayForKey("keyQuickTask3")!
+        dataQuickTaskTimer = myDefaults.stringArrayForKey("keyQuickTaskTimer3")!
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +33,7 @@ class PopUpController: UIViewController {
     
 
     @IBAction func CreateNewTask(sender: AnyObject) {
-        print(sender)
+        
     }
     
     @IBAction func AddToTask(sender: AnyObject) {
@@ -40,8 +41,11 @@ class PopUpController: UIViewController {
     
     
     @IBAction func Delete(sender: AnyObject) {
+        dataQuickTask.removeAtIndex(identifierCell-10000)
+        dataQuickTaskTimer.removeAtIndex(identifierCell-10000)
         
-        
+        myDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
+        myDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
     }
 
 

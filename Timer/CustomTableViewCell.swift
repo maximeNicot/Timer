@@ -42,6 +42,7 @@ class CustomTableViewCell: UITableViewCell {
     
     //click sur le bouton a droite des cells
     @IBAction func OnClick(sender: AnyObject) {
+        
         self.delegate.SegueFromCell(mydata: identifier)
          
     }
@@ -53,7 +54,7 @@ class CustomTableViewCell: UITableViewCell {
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
-       
+        
         super.setSelected(selected, animated: animated)
         
     }

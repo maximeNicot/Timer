@@ -230,6 +230,7 @@
                                         <state key="normal" title="Delete"/>
                                         <connections>
                                             <action selector="Delete:" destination="SPP-wy-Dsk" eventType="touchUpInside" id="Qli-NH-D1d"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="OQh-9r-ExT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uH2-xV-ZzT">
@@ -267,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5x3-ep-QXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-333" y="252"/>
+            <point key="canvasLocation" x="-333" y="227"/>
         </scene>
         <!--EditController-->
         <scene sceneID="h8g-7N-H1e">
@@ -294,7 +295,7 @@
                                     <constraint firstAttribute="width" constant="55" id="nvQ-5W-nUw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVn-fb-lLk">
@@ -381,7 +382,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoG-kt-UWS">
                                 <rect key="frame" x="31" y="163" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -474,7 +475,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ukF-Rf-2IN"/>
         <segue reference="K3k-2x-s1A"/>
+        <segue reference="OQh-9r-ExT"/>
     </inferredMetricsTieBreakers>
 </document>

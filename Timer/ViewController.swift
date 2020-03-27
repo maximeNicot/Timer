@@ -63,15 +63,15 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         tableView.dataSource = self
         
         tableView.reloadData()
-        // Do any additional setup after loading the view, typically from a nib.
     }
+    
     @IBAction func quickStart(sender: AnyObject) {
-        dataQuickTask.append("Quick Task" + String(dataQuickTask.count))
+        dataQuickTask.append("Quick Task " + String(dataQuickTask.count))
         dataQuickTaskTimer.append("0")
         dataQuickTaskDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
         dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
         
-        data.append("Quick Task " + String(dataQuickTask.count + 1))
+        data.append("Quick Task " + String(dataQuickTask.count))
         dataTimer.append("0")
         
         tableView.reloadData()
@@ -118,9 +118,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         dataTimer[indexPath.row] = cell.labelTimer.text!
         cell.label.text = data[indexPath.row]
         
-        cell.identifier = indexPath.row + 9999
+        cell.identifier = indexPath.row + 10000
         cell.starter()
-        //cell.activerTimer()
         cell.delegate = self
         }
         
@@ -142,9 +141,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             cell.starter()
             cell.dossier()
             cell.actualiserChronoDossier()
-            
-            
-            
+    
             cell.delegate = self
         }
        
@@ -192,7 +189,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         }
         if(segue.identifier == "seguePopUp"){
             let vc = segue.destinationViewController as! PopUpController
-            vc.cellAppelante = "aa"
+            vc.identifierCell = sender as! Int
         }
         else{
             
@@ -201,9 +198,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     
     //protocol
-    func SegueFromCell(mydata dataobject: AnyObject){
+    func SegueFromCell(mydata identifierCell: AnyObject){
         //comment get la value ???
-        self.performSegueWithIdentifier("seguePopUp", sender: dataobject)
+        print("Identifier cell " + String(identifierCell))
+        self.performSegueWithIdentifier("seguePopUp", sender: identifierCell)
     }
 
 }
