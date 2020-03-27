@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7188CDFC242CD48E002541FD /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188CDFB242CD48E002541FD /* EditController.swift */; settings = {ASSET_TAGS = (); }; };
 		71CF1972240BEE10006EB9E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF1971240BEE10006EB9E0 /* AppDelegate.swift */; };
 		71CF1974240BEE10006EB9E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF1973240BEE10006EB9E0 /* ViewController.swift */; };
 		71CF1977240BEE10006EB9E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CF1975240BEE10006EB9E0 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7188CDFB242CD48E002541FD /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
 		71CF196E240BEE10006EB9E0 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CF1971240BEE10006EB9E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CF1973240BEE10006EB9E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				71CF1975240BEE10006EB9E0 /* Main.storyboard */,
 				71CF1973240BEE10006EB9E0 /* ViewController.swift */,
 				71CF65A12424E6C300F43EB9 /* PopUpController.swift */,
+				7188CDFB242CD48E002541FD /* EditController.swift */,
 				71D07759241D7EF500A8D2DD /* BrochureController.swift */,
 				71CF1983240BF7D8006EB9E0 /* NewProjectViewController.swift */,
 				71D0774F241D24CC00A8D2DD /* TableViewController.swift */,
@@ -164,6 +167,7 @@
 				71D07757241D359200A8D2DD /* CustomTableViewCell.swift in Sources */,
 				71CF1984240BF7D8006EB9E0 /* NewProjectViewController.swift in Sources */,
 				71D32876241EB38F005FB448 /* NewTaskController.swift in Sources */,
+				7188CDFC242CD48E002541FD /* EditController.swift in Sources */,
 				71CF1972240BEE10006EB9E0 /* AppDelegate.swift in Sources */,
 				71D07750241D24CC00A8D2DD /* TableViewController.swift in Sources */,
 				71D0775A241D7EF500A8D2DD /* BrochureController.swift in Sources */,

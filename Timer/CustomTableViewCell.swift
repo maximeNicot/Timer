@@ -20,6 +20,7 @@ class CustomTableViewCell: UITableViewCell {
     
     var delegate:CellDelegate!
     var identifier = 1
+    // myDefaults contient le chrono
     var myDefaults = NSUserDefaults.standardUserDefaults()
    
     var timer = NSTimer()
@@ -27,7 +28,9 @@ class CustomTableViewCell: UITableViewCell {
     var oneTimer = true
     
     var isPageBlanche = false
+    var nbCellPageBlanche = 0
     var isDossier = false
+    
    
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -85,6 +88,24 @@ class CustomTableViewCell: UITableViewCell {
     func dossier(){
         imagePausePlay.image = UIImage(named: "Dossier")
         isDossier = true
+        
+    }
+    
+    func actualiserChronoDossier(){
+        
+        var allChronoDuDossier = ""
+        
+        // faire une boucle pour chaque dossier identifier
+        if (myDefaults.stringForKey("totalChrono" + String(2)) != nil){
+            allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(2))!
+            myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7000))
+
+        }
+        
+        if (myDefaults.stringForKey("totalChrono" + String(102)) != nil){
+            allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(102))!
+            myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7001))
+        }
     }
     
     internal func incrementer(){

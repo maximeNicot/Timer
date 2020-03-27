@@ -20,8 +20,8 @@ class NewTaskController: UIViewController {
     @IBAction func saveButton(sender: AnyObject) {
         data.append(textField.text!)
         dataTimer.append("0")
-        dataDefaults.setValue(data, forKey: "keyData3" + String(identifier))
-        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer3" + String(identifier))
+        dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
+        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         print("Nouvelle cell")
         
     }
@@ -36,8 +36,8 @@ class NewTaskController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldProject.text = projectTitre
-        data = dataDefaults.stringArrayForKey("keyData3" + String(identifier))!
-        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer3" + String(identifier))!
+        data = dataDefaults.stringArrayForKey("keyData4" + String(identifier))!
+        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer4" + String(identifier))!
         
         
         // Do any additional setup after loading the view.

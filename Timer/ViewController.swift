@@ -62,6 +62,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func quickStart(sender: AnyObject) {
@@ -136,13 +137,18 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(indexPath.section == 2){
             
             cell.label.text = dataDossier[indexPath.row]
+            
             cell.identifier = indexPath.row + 7000
             cell.starter()
             cell.dossier()
+            cell.actualiserChronoDossier()
+            
+            
             
             cell.delegate = self
         }
        
+        
         return cell
         
     }
@@ -154,10 +160,17 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         if(currentCell.isDossier){
             self.monTitre = currentCell.label.text!
-            self.identifierTableViewController = indexPath.row * 100 + indexPath.section
+            self.identifierTableViewController = indexPath.row * 100 + indexPath.section //2
+            print(identifierTableViewController)
             self.performSegueWithIdentifier("segueTableView", sender: self)
         }
         if(currentCell.isPageBlanche){
+            self.monTitre = currentCell.label.text!
+            self.identifierTableViewController = indexPath.row * 200 + indexPath.section //1
+            print(identifierTableViewController)
+            if(self.monTitre == "All tasks"){
+                // Faire ce qu'il faut pour le bon rendu
+            }
             self.performSegueWithIdentifier("segueTableView", sender: self)
         }
         else{
@@ -175,6 +188,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             let vc = segue.destinationViewController as! TableViewController
             vc.identifier = self.identifierTableViewController
             vc.monTitre =  self.monTitre
+            
         }
         if(segue.identifier == "seguePopUp"){
             let vc = segue.destinationViewController as! PopUpController

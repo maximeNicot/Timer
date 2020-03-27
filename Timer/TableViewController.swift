@@ -4,7 +4,7 @@
 //
 //  Created by Antoine NICOT on 14/03/2020.
 //  Copyright © 2020 maxime. All rights reserved.
-//
+
 
 import UIKit
 
@@ -14,8 +14,12 @@ class TableViewController: UITableViewController, CellDelegate {
     var dataDefaults = NSUserDefaults.standardUserDefaults()
     var dataTimerDefaults = NSUserDefaults.standardUserDefaults()
     
+    
+    var totalChrono = 0
     var identifier = 1
     var monTitre = ""
+    
+    
     
     @IBOutlet var viewTable: UITableView!
    
@@ -31,14 +35,15 @@ class TableViewController: UITableViewController, CellDelegate {
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
       
-        if(dataDefaults.stringArrayForKey("keyData3" + String(identifier)) != nil){
-        data = dataDefaults.stringArrayForKey("keyData3" + String(identifier))!
-        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer3" + String(identifier))!
+        if(dataDefaults.stringArrayForKey("keyData4" + String(identifier)) != nil){
+        data = dataDefaults.stringArrayForKey("keyData4" + String(identifier))!
+        dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer4" + String(identifier))!
         //tableView.reloadData()
         }
-        dataDefaults.setValue(data, forKey: "keyData3" + String(identifier))
-        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer3" + String(identifier))
+        dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
+        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
+        print(totalChrono)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +59,7 @@ class TableViewController: UITableViewController, CellDelegate {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let nbRow = dataTimerDefaults.stringArrayForKey("keyDataTimer3" + String(identifier))!.count
+        let nbRow = dataTimerDefaults.stringArrayForKey("keyDataTimer4" + String(identifier))!.count
         
         return (nbRow)
     }
@@ -70,9 +75,15 @@ class TableViewController: UITableViewController, CellDelegate {
         
         cell.label.text = data[indexPath.row]
         
-        cell.identifier = indexPath.row + 100
+        cell.identifier = indexPath.row + 1000 + identifier
         cell.starter()
         cell.delegate = self
+        
+        
+        totalChrono = totalChrono + cell.chrono
+        
+        
+        
         return cell
     }
     
@@ -86,6 +97,8 @@ class TableViewController: UITableViewController, CellDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        dataDefaults.setValue(totalChrono, forKey: "totalChrono" + String(identifier))
+        
         if(segue.identifier == "segueNewTask"){
             let vc = segue.destinationViewController as! NewTaskController
             vc.identifier = self.identifier
@@ -95,7 +108,7 @@ class TableViewController: UITableViewController, CellDelegate {
         }
         
     }
-    
+   
     //protocol
     func SegueFromCell(mydata dataobject: AnyObject){
         self.performSegueWithIdentifier("segueBrochure", sender: dataobject)
