@@ -28,10 +28,12 @@ class TableViewController: UITableViewController, CellDelegate {
         if(!editingBool){
             tableView.setEditing(true, animated: true)
             editingBool = true
+            tableView.reloadData()
         }
         else{
             tableView.setEditing(false, animated: false)
             editingBool = false
+            tableView.reloadData()
         }
         
     }
@@ -50,7 +52,7 @@ class TableViewController: UITableViewController, CellDelegate {
         if(dataDefaults.stringArrayForKey("keyData4" + String(identifier)) != nil){
         data = dataDefaults.stringArrayForKey("keyData4" + String(identifier))!
         dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer4" + String(identifier))!
-        //tableView.reloadData()
+        
         }
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
@@ -79,17 +81,32 @@ class TableViewController: UITableViewController, CellDelegate {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
         
-        dataTimer[indexPath.row] = cell.labelTimer.text!
+        
+        
         
         cell.label.text = data[indexPath.row]
         
+        
+        
         cell.identifier = indexPath.row + 1000 + identifier
         cell.starter()
+        //en dessous le probleme
+        //cell.labelTimer.text = dataTimer[indexPath.row]
+        dataTimer[indexPath.row] = cell.labelTimer.text!
+        
+        
         cell.delegate = self
         
         
         totalChrono = totalChrono + cell.chrono
         
+        if(editingBool){
+            cell.editSensInterdit()
+
+        }
+        else{
+            cell.editTriangle()
+        }
         
         
         return cell
@@ -124,10 +141,19 @@ class TableViewController: UITableViewController, CellDelegate {
     }
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        swap(&data[sourceIndexPath.row], &data[destinationIndexPath.row])
-        swap(&dataTimer[sourceIndexPath.row], &dataTimer[destinationIndexPath.row])
+        //let sourceCell = tableView.cellForRowAtIndexPath(sourceIndexPath) as! CustomTableViewCell
+        //let destinationCell = tableView.cellForRowAtIndexPath(destinationIndexPath) as! CustomTableViewCell
+        
+       
+        
+        data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
+        dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
+        
+        
+        
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
+        
         tableView.reloadData()
         }
     

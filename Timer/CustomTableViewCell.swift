@@ -31,6 +31,8 @@ class CustomTableViewCell: UITableViewCell {
     var nbCellPageBlanche = 0
     var isDossier = false
     
+    
+    
    
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +49,7 @@ class CustomTableViewCell: UITableViewCell {
     func starter(){
         chrono = myDefaults.integerForKey("keyChrono" + String(identifier))
         labelTimer.text = String(chrono)
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -91,8 +94,15 @@ class CustomTableViewCell: UITableViewCell {
         
     }
     
+    func editSensInterdit(){
+        imagePausePlay.image = UIImage(named: "SensInterdit")
+    }
+    
+    func editTriangle(){
+        imagePausePlay.image = UIImage(named: "ImageTriangle")
+    }
+    
     func actualiserChronoDossier(){
-        
         var allChronoDuDossier = ""
         
         // faire une boucle pour chaque dossier identifier
