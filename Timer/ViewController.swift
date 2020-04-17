@@ -66,12 +66,21 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     
     @IBAction func quickStart(sender: AnyObject) {
-        dataQuickTask.append("Quick Task " + String(dataQuickTask.count))
+        // juste pour le premeir quick start qui est fait a partir d'un tab vide donc 0
+        if(dataQuickTask.count == 0 ){
+            dataQuickTask.append("Quick Task " + String(1))
+            data.append("Quick Task " + String(1))
+        }
+        else {
+            dataQuickTask.append("Quick Task " + String(dataQuickTask.count + 1))
+            data.append("Quick Task " + String(dataQuickTask.count + 1))
+        }
+        
         dataQuickTaskTimer.append("0")
         dataQuickTaskDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
         dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
         
-        data.append("Quick Task " + String(dataQuickTask.count))
+       
         dataTimer.append("0")
         
         tableView.reloadData()
@@ -98,7 +107,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
    
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
-            return (data.count)
+            return (dataQuickTask.count)
         }
         if(section == 1){
             return (dataPageBlanche.count)
@@ -109,14 +118,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         return (data.count)
     }
     
-    
+    //Creation cell
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
         if(indexPath.section == 0){
-        dataTimer[indexPath.row] = cell.labelTimer.text!
-        cell.label.text = data[indexPath.row]
+        dataQuickTaskTimer[indexPath.row] = cell.labelTimer.text!
+        cell.label.text = dataQuickTask[indexPath.row]
         
         cell.identifier = indexPath.row + 10000
         cell.starter()

@@ -33,11 +33,13 @@ class CustomTableViewCell: UITableViewCell {
     
     
     
+    @IBOutlet weak var boutonDroite: UIButton!
    
     override func awakeFromNib() {
         super.awakeFromNib()
        
         labelTimer.text = String(chrono)
+        
     }
     
     //click sur le bouton a droite des cells
@@ -87,11 +89,16 @@ class CustomTableViewCell: UITableViewCell {
     func pageBlanche(){
         imagePausePlay.image = UIImage(named: "PageBlanche")
         isPageBlanche = true
+        //boutonDroite.setImage(UIImage(named: "Dossier"), forState: UIControlState.Normal)
+        boutonDroite.hidden = true
+        boutonDroite.enabled = false
     }
     
     func dossier(){
         imagePausePlay.image = UIImage(named: "Dossier")
         isDossier = true
+        boutonDroite.hidden = true
+        boutonDroite.enabled = false
         
     }
     

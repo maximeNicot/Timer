@@ -65,10 +65,84 @@
             </objects>
             <point key="canvasLocation" x="346" y="-431"/>
         </scene>
+        <!--Date Picker Controller-->
+        <scene sceneID="m3F-47-Bb0">
+            <objects>
+                <viewController id="YJD-5E-ciC" customClass="DatePickerController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d6s-by-pWA"/>
+                        <viewControllerLayoutGuide type="bottom" id="Suo-8K-J51"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gaE-nm-Fap">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfa-5Q-UiD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Brochure Picker" id="GgL-6v-vVk">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="iqp-MG-99m">
+                                            <connections>
+                                                <segue destination="6L8-Qt-1bb" kind="show" id="gfY-UL-lSn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="qFi-JU-989"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dlF-WC-JTJ">
+                                <rect key="frame" x="0.0" y="290" width="600" height="266"/>
+                                <date key="date" timeIntervalSinceReferenceDate="608798391.10525501">
+                                    <!--2020-04-17 06:39:51 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="dateSelectedFromDatePicker:" destination="YJD-5E-ciC" eventType="valueChanged" id="eUk-MO-7Uh"/>
+                                </connections>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Start" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tFz-S0-BCQ">
+                                <rect key="frame" x="217" y="96" width="165" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="End" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1S-fG-d1P">
+                                <rect key="frame" x="217" y="134" width="165" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Duration" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-Df-cv2">
+                                <rect key="frame" x="217" y="172" width="165" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="durationClick:" destination="YJD-5E-ciC" eventType="touchUpInside" id="rZK-M7-dj3"/>
+                                    <action selector="durationEdit:" destination="YJD-5E-ciC" eventType="editingDidEnd" id="wVr-sn-YmZ"/>
+                                    <action selector="durationOnClick:" destination="YJD-5E-ciC" eventType="editingDidBegin" id="AXv-04-n4O"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nfa-5Q-UiD" secondAttribute="trailing" constant="-20" id="0EF-nO-d1o"/>
+                            <constraint firstItem="Nfa-5Q-UiD" firstAttribute="leading" secondItem="gaE-nm-Fap" secondAttribute="leadingMargin" constant="-20" id="2oR-D5-DBf"/>
+                            <constraint firstItem="dlF-WC-JTJ" firstAttribute="leading" secondItem="gaE-nm-Fap" secondAttribute="leadingMargin" constant="-20" id="WTQ-6H-PTf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dlF-WC-JTJ" secondAttribute="trailing" constant="-20" id="i6t-a0-uhW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="dlF-WC-JTJ" id="rY0-eZ-eFn"/>
+                        <outlet property="duration" destination="mTa-Df-cv2" id="Nyb-4a-s2R"/>
+                        <outlet property="end" destination="i1S-fG-d1P" id="hYf-Va-1Sm"/>
+                        <outlet property="start" destination="tFz-S0-BCQ" id="0uL-vf-4Yd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBm-wi-0u1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1709" y="-1111"/>
+        </scene>
         <!--BrochureController-->
         <scene sceneID="YfC-5C-Ajs">
             <objects>
-                <viewController id="6L8-Qt-1bb" userLabel="BrochureController" sceneMemberID="viewController">
+                <viewController id="6L8-Qt-1bb" userLabel="BrochureController" customClass="BrochureController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MVl-xX-jqx"/>
                         <viewControllerLayoutGuide type="bottom" id="MYv-qE-VZW"/>
@@ -77,7 +151,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8gq-nL-Izl">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8gq-nL-Izl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Brochure" id="Q2q-HM-0bK">
@@ -89,15 +163,43 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSG-Fu-fGV">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="+" id="kkd-eR-xj6">
+                                        <connections>
+                                            <segue destination="YJD-5E-ciC" kind="show" id="ztg-fq-46r"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-3L-LBD">
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MOw-2P-v30">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MOw-2P-v30" id="f0E-jR-b3d">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="8gq-nL-Izl" secondAttribute="trailing" constant="-20" id="8EV-RS-qLu"/>
+                            <constraint firstItem="8gq-nL-Izl" firstAttribute="leading" secondItem="ooC-Jo-D9k" secondAttribute="leadingMargin" constant="-20" id="gcg-cR-Pc1"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUj-nH-Fdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-415" y="-1111"/>
+            <point key="canvasLocation" x="-1055" y="-1111"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -471,11 +573,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouj-4m-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1511" y="-421"/>
+            <point key="canvasLocation" x="-1043" y="-445"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="K3k-2x-s1A"/>
-        <segue reference="OQh-9r-ExT"/>
+        <segue reference="gfY-UL-lSn"/>
+        <segue reference="ukF-Rf-2IN"/>
     </inferredMetricsTieBreakers>
 </document>
