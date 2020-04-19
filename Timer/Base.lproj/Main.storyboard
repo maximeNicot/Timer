@@ -103,11 +103,21 @@
                                 <rect key="frame" x="217" y="96" width="165" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="startFinish:" destination="YJD-5E-ciC" eventType="editingDidEnd" id="ndk-zc-nvU"/>
+                                    <action selector="startOnClick:" destination="YJD-5E-ciC" eventType="touchDown" id="W2Y-P4-Jpc"/>
+                                    <action selector="startOnClick:" destination="YJD-5E-ciC" eventType="touchUpInside" id="tlm-QZ-myj"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="End" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1S-fG-d1P">
                                 <rect key="frame" x="217" y="134" width="165" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="endFinish:" destination="YJD-5E-ciC" eventType="editingDidEnd" id="Zev-KK-Yzf"/>
+                                    <action selector="endOnClick:" destination="YJD-5E-ciC" eventType="touchUpInside" id="xlS-Ql-XKO"/>
+                                    <action selector="endOnClick:" destination="YJD-5E-ciC" eventType="touchDown" id="ynZ-LB-7Mr"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Duration" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-Df-cv2">
                                 <rect key="frame" x="217" y="172" width="165" height="30"/>
@@ -589,6 +599,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="ukF-Rf-2IN"/>
         <segue reference="Nkl-at-XlH"/>
-        <segue reference="WGY-wi-D1x"/>
+        <segue reference="gfY-UL-lSn"/>
     </inferredMetricsTieBreakers>
 </document>

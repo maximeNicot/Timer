@@ -41,7 +41,6 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         }
         
         if (!MFMailComposeViewController.canSendMail()){
-            
             print("Pas autorisation d'envois de mail")
             
         }
