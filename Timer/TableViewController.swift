@@ -7,8 +7,12 @@
 
 
 import UIKit
+import MessageUI
 
-class TableViewController: UITableViewController, CellDelegate {
+
+
+
+class TableViewController: UITableViewController,MFMailComposeViewControllerDelegate, CellDelegate {
     var data = [String]()
     var dataTimer = [String]()
     var dataDefaults = NSUserDefaults.standardUserDefaults()
@@ -19,6 +23,42 @@ class TableViewController: UITableViewController, CellDelegate {
     var identifier = 1
     var monTitre = ""
     var editingBool = false
+    
+    
+    @IBAction func onMessage(sender: AnyObject) {
+        mail()
+       
+    }
+    
+    func mail(){
+    
+        let mailEnregistre = dataDefaults.stringForKey("mail_preference")
+        if(mailEnregistre != nil){
+            print("le mail enregistré est : " + mailEnregistre!)
+        }
+        else{
+            print("Pas de mail enregistré")
+        }
+        
+        if (!MFMailComposeViewController.canSendMail()){
+            
+            print("Pas autorisation d'envois de mail")
+            
+        }
+        else{
+            print("Send mail OK")
+            let composer = MFMailComposeViewController()
+            composer.mailComposeDelegate = self
+            composer.setToRecipients([mailEnregistre!])
+            composer.setSubject("Objet du mail")
+            composer.setMessageBody("Le corps du mails", isHTML: false)
+        
+            presentViewController(composer, animated: true, completion: nil)
+        }
+    }
+    
+   
+    
     
     
     @IBOutlet var viewTable: UITableView!
@@ -162,8 +202,6 @@ class TableViewController: UITableViewController, CellDelegate {
     func SegueFromCell(mydata dataobject: AnyObject){
         self.performSegueWithIdentifier("segueBrochure", sender: dataobject)
     }
-    
-    
-
-
 }
+
+

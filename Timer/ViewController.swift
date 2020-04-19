@@ -36,6 +36,15 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     var identifierTableViewController = 1
     
     override func viewDidLoad() {
+        
+        let mailEnregistre = dataPageBlancheDefaults.stringForKey("mail_preference")
+        if(mailEnregistre != nil){
+            print("le mail enregistré est : " + mailEnregistre!)
+        }
+        else{
+            print("Pas de mail enregistré")
+        }
+        
         super.viewDidLoad()
         print("le viewcontroller principal démarre")
         if(dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3") != nil){

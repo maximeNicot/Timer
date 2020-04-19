@@ -547,6 +547,16 @@
                                         <segue destination="cFK-IO-u7c" kind="show" identifier="segueNewTask" id="uJ4-DS-jaG"/>
                                     </connections>
                                 </barButtonItem>
+                                <barButtonItem style="plain" id="ZAa-m0-pVG">
+                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bta-48-Su5">
+                                        <rect key="frame" x="41" y="7" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Message"/>
+                                        <connections>
+                                            <action selector="onMessage:" destination="FUV-rP-BsP" eventType="touchUpInside" id="3ZJ-Rh-ugo"/>
+                                        </connections>
+                                    </button>
+                                </barButtonItem>
                             </items>
                         </toolbar>
                         <prototypes>
@@ -577,8 +587,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="K3k-2x-s1A"/>
-        <segue reference="gfY-UL-lSn"/>
         <segue reference="ukF-Rf-2IN"/>
+        <segue reference="Nkl-at-XlH"/>
+        <segue reference="WGY-wi-D1x"/>
     </inferredMetricsTieBreakers>
 </document>

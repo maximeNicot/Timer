@@ -8,8 +8,13 @@
 
 import UIKit
 
+
 class DatePickerController: UIViewController {
 
+    var startTxt = ""
+    var endTxt = ""
+    var durationTxt = ""
+    
     @IBOutlet weak var start: UITextField!
     @IBOutlet weak var end: UITextField!
     @IBOutlet weak var duration: UITextField!
@@ -51,7 +56,7 @@ class DatePickerController: UIViewController {
         start.text = formattedDate
         end.text = formattedDate
         
-        duration.text = String(datePicker.countDownDuration)
+        duration.text = String(datePicker.countDownDuration/3600)
     }
     
 }
