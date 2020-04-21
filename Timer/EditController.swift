@@ -40,6 +40,7 @@ class EditController: UIViewController {
         
         myDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
         myDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
+        
     }
     
     

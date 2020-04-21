@@ -53,12 +53,12 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3")!
             dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
             
-            for i in dataQuickTask{
+            /*for i in dataQuickTask{
                 data.append(i)
             }
             for i in dataQuickTaskTimer{
-                dataTimer.append(i)
-            }
+                //dataTimer.append(i)
+            }*/
         }
         if(dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche") != nil){
             dataPageBlanche = dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche")!
@@ -76,15 +76,16 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         tableView.reloadData()
     }
     
+    
     @IBAction func quickStart(sender: AnyObject) {
         // juste pour le premier quick start qui est fait a partir d'un tab vide donc 0
         if(dataQuickTask.count == 0 ){
             dataQuickTask.append("Quick Task " + String(1))
-            data.append("Quick Task " + String(1))
+            //data.append("Quick Task " + String(1))
         }
         else {
             dataQuickTask.append("Quick Task " + String(dataQuickTask.count + 1))
-            data.append("Quick Task " + String(dataQuickTask.count + 1))
+            //data.append("Quick Task " + String(dataQuickTask.count + 1))
         }
         
         dataQuickTaskTimer.append("0")
@@ -125,7 +126,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(section == 2){
             return (dataDossier.count)
         }
-        return (data.count)
+        return (0)
     }
     
     //Creation cell
@@ -139,10 +140,11 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         cell.identifier = indexPath.row + 10000
         cell.starter()
+        cell.quickStart()
         cell.delegate = self
         }
         
-        if(indexPath.section == 1){
+        else if(indexPath.section == 1){
             
             cell.label.text = dataPageBlanche[indexPath.row]
             cell.identifier = indexPath.row + 8000
@@ -152,7 +154,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             cell.delegate = self
         }
         
-        if(indexPath.section == 2){
+        else if(indexPath.section == 2){
             
             cell.label.text = dataDossier[indexPath.row]
             
@@ -174,13 +176,19 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
-        if(currentCell.isDossier){
+        print(String(currentCell.isDossier))
+        print(String(currentCell.isPageBlanche))
+        print(String(currentCell.isQuickStart))
+        if(currentCell.isQuickStart){
+            currentCell.activerTimer()
+        }
+        else if(currentCell.isDossier){
             self.monTitre = currentCell.label.text!
             self.identifierTableViewController = indexPath.row * 100 + indexPath.section //2
             print(identifierTableViewController)
             self.performSegueWithIdentifier("segueTableView", sender: self)
         }
-        if(currentCell.isPageBlanche){
+        else if(currentCell.isPageBlanche){
             self.monTitre = currentCell.label.text!
             self.identifierTableViewController = indexPath.row * 200 + indexPath.section //1
             print(identifierTableViewController)
@@ -189,13 +197,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             }
             self.performSegueWithIdentifier("segueTableView", sender: self)
         }
-        else{
-            currentCell.activerTimer()
-        }
-        
-        
-        
     }
+    
     // lancé avant chaque segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print(segue.identifier)

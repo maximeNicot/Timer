@@ -30,6 +30,7 @@ class CustomTableViewCell: UITableViewCell {
     var isPageBlanche = false
     var nbCellPageBlanche = 0
     var isDossier = false
+    var isQuickStart = false
     
     
     
@@ -102,6 +103,14 @@ class CustomTableViewCell: UITableViewCell {
         boutonDroite.enabled = false
         
     }
+    func quickStart(){
+        imagePausePlay.image = UIImage(named: "ImageTriangle")
+        isQuickStart = true
+        isPageBlanche = false
+        boutonDroite.hidden = false
+        boutonDroite.enabled = true
+    }
+    
     
     func editSensInterdit(){
         imagePausePlay.image = UIImage(named: "SensInterdit")
