@@ -328,7 +328,7 @@
                                         <state key="normal" title="Create new task"/>
                                         <connections>
                                             <action selector="CreateNewTask:" destination="SPP-wy-Dsk" eventType="touchUpInside" id="S71-xp-CUU"/>
-                                            <segue destination="hRV-XH-IkZ" kind="show" id="wUo-Ox-rdX"/>
+                                            <segue destination="hRV-XH-IkZ" kind="show" identifier="segueEditControllerFromNewTask" id="wUo-Ox-rdX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LI-lz-fgF">
@@ -390,7 +390,6 @@
         <!--EditController-->
         <scene sceneID="h8g-7N-H1e">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KCE-yk-30u" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="hRV-XH-IkZ" userLabel="EditController" customClass="EditController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yXc-LM-azJ"/>
@@ -419,7 +418,17 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" id="Cjt-W7-ooZ"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="N0j-hb-bmK"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="gMp-P9-4Mx">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7M8-e1-zBv">
+                                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveOnClick:" destination="hRV-XH-IkZ" eventType="touchUpInside" id="OQZ-Jj-af3"/>
+                                                    <segue destination="BYZ-38-t0r" kind="show" id="XBr-vZ-Q4V"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -456,8 +465,9 @@
                         <outlet property="textFieldProjet" destination="Uwp-hH-XWh" id="jfi-6d-b2O"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCE-yk-30u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-333" y="958"/>
+            <point key="canvasLocation" x="-333" y="881"/>
         </scene>
         <!--Choix Projet View Controller-->
         <scene sceneID="ry5-pf-OOK">
@@ -659,9 +669,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WGY-wi-D1x"/>
         <segue reference="Nkl-at-XlH"/>
-        <segue reference="Cjt-W7-ooZ"/>
-        <segue reference="0Ru-nR-lZe"/>
+        <segue reference="OQh-9r-ExT"/>
+        <segue reference="wUo-Ox-rdX"/>
+        <segue reference="WGY-wi-D1x"/>
     </inferredMetricsTieBreakers>
 </document>

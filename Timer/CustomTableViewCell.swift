@@ -42,10 +42,11 @@ class CustomTableViewCell: UITableViewCell {
         
     }
     
-    //click sur le bouton a droite des cells
+    //click sur le bouton bleu a droite des cells
     @IBAction func OnClick(sender: AnyObject) {
         
         self.delegate.SegueFromCell(mydata: identifier)
+        myDefaults.setValue(label.text, forKey: "labelTextCell") // Plus facile de passe la valeur comme ça finalement
          
     }
     

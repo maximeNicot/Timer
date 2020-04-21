@@ -34,6 +34,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     //pour les segue de tableViewController
     var monTitre = ""
     var identifierTableViewController = 1
+    // pour les segue de PopUpController
+    var nomTask = ""
     
     override func viewDidLoad() {
         
@@ -75,7 +77,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     
     @IBAction func quickStart(sender: AnyObject) {
-        // juste pour le premeir quick start qui est fait a partir d'un tab vide donc 0
+        // juste pour le premier quick start qui est fait a partir d'un tab vide donc 0
         if(dataQuickTask.count == 0 ){
             dataQuickTask.append("Quick Task " + String(1))
             data.append("Quick Task " + String(1))
@@ -167,7 +169,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
     }
     
-    // click sur la cell
+    // click sur la cell entiere
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
@@ -207,6 +209,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(segue.identifier == "seguePopUp"){
             let vc = segue.destinationViewController as! PopUpController
             vc.identifierCell = sender as! Int
+            
         }
         else{
             
@@ -216,7 +219,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     //protocol
     func SegueFromCell(mydata identifierCell: AnyObject){
-        //comment get la value ???
+        
         print("Identifier cell " + String(identifierCell))
         self.performSegueWithIdentifier("seguePopUp", sender: identifierCell)
     }

@@ -16,6 +16,7 @@ class ChoixProjetViewController: UIViewController, UITableViewDelegate, UITableV
     var dataDossier = [String]()
     
     var dataDossierDefaults = NSUserDefaults.standardUserDefaults()
+    var nomProjetSend = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,15 +104,28 @@ class ChoixProjetViewController: UIViewController, UITableViewDelegate, UITableV
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         if(currentCell.isDossier){
-            
+            nomProjetSend = currentCell.label.text!
             performSegueWithIdentifier("segueEditController", sender: self)
         }
         if(currentCell.isPageBlanche){
-            
+            nomProjetSend = currentCell.label.text!
             performSegueWithIdentifier("segueEditController", sender: self)
         }
-        else{
-            currentCell.activerTimer()
+        
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(segue.identifier)
+        
+        if(segue.identifier == "segueEditController"){
+            let vc = segue.destinationViewController as! EditController
+            vc.nomProjet = nomProjetSend
+            
         }
+        else{
+            
+        }
+        
     }
 }

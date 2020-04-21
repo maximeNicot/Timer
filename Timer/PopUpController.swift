@@ -14,8 +14,9 @@ class PopUpController: UIViewController {
     var dataQuickTask = [String]()
     var dataQuickTaskTimer = [String]()
     var myDefaults = NSUserDefaults.standardUserDefaults()
+    var nomtask = ""
     
-    var identifierCell = 0
+    var identifierCell = -1
    
     
     override func viewDidLoad() {
@@ -48,5 +49,14 @@ class PopUpController: UIViewController {
         myDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(segue.identifier)
+        
+        if(segue.identifier == "segueEditControllerFromNewTask"){
+            let vc = segue.destinationViewController as! EditController
+            vc.identifierCell = identifierCell
+        }
+    }
 
 }
