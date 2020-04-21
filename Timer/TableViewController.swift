@@ -9,9 +9,6 @@
 import UIKit
 import MessageUI
 
-
-
-
 class TableViewController: UITableViewController,MFMailComposeViewControllerDelegate, CellDelegate {
     var data = [String]()
     var dataTimer = [String]()
@@ -27,7 +24,6 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     
     @IBAction func onMessage(sender: AnyObject) {
         mail()
-       
     }
     
     func mail(){
@@ -56,12 +52,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         }
     }
     
-   
-    
-    
     
     @IBOutlet var viewTable: UITableView!
-   
     
     @IBAction func editClick(sender: AnyObject) {
         if(!editingBool){
@@ -141,8 +133,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         
         if(editingBool){
             cell.editSensInterdit()
-
         }
+            
         else{
             cell.editTriangle()
         }
@@ -151,6 +143,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         return cell
     }
     
+    //click sur une cell
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
@@ -183,11 +176,9 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         //let sourceCell = tableView.cellForRowAtIndexPath(sourceIndexPath) as! CustomTableViewCell
         //let destinationCell = tableView.cellForRowAtIndexPath(destinationIndexPath) as! CustomTableViewCell
         
-       
         
         data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        
         
         
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))

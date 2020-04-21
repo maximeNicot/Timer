@@ -46,7 +46,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         }
         
         super.viewDidLoad()
-        print("le viewcontroller principal démarre")
+        print("le viewController principal démarre")
         if(dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3") != nil){
             dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3")!
             dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
@@ -110,7 +110,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3
     }
    

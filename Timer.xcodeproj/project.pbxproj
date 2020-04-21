@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		71726012244C995400B76515 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71726011244C995400B76515 /* Settings.bundle */; settings = {ASSET_TAGS = (); }; };
+		71726014244EFB0900B76515 /* ChoixProjetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71726013244EFB0900B76515 /* ChoixProjetViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7188CDFC242CD48E002541FD /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188CDFB242CD48E002541FD /* EditController.swift */; settings = {ASSET_TAGS = (); }; };
 		719867B42449861000D8BDEA /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719867B32449861000D8BDEA /* DatePickerController.swift */; settings = {ASSET_TAGS = (); }; };
 		719867B6244C82B700D8BDEA /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719867B5244C82B700D8BDEA /* MessageController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		71726011244C995400B76515 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		71726013244EFB0900B76515 /* ChoixProjetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoixProjetViewController.swift; sourceTree = "<group>"; };
 		7188CDFB242CD48E002541FD /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
 		719867B32449861000D8BDEA /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		719867B5244C82B700D8BDEA /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				71CF1971240BEE10006EB9E0 /* AppDelegate.swift */,
 				71CF197A240BEE10006EB9E0 /* LaunchScreen.storyboard */,
 				71CF1975240BEE10006EB9E0 /* Main.storyboard */,
+				71726013244EFB0900B76515 /* ChoixProjetViewController.swift */,
 				719867B5244C82B700D8BDEA /* MessageController.swift */,
 				719867B32449861000D8BDEA /* DatePickerController.swift */,
 				71CF1973240BEE10006EB9E0 /* ViewController.swift */,
@@ -179,6 +182,7 @@
 				71CF1984240BF7D8006EB9E0 /* NewProjectViewController.swift in Sources */,
 				71D32876241EB38F005FB448 /* NewTaskController.swift in Sources */,
 				7188CDFC242CD48E002541FD /* EditController.swift in Sources */,
+				71726014244EFB0900B76515 /* ChoixProjetViewController.swift in Sources */,
 				719867B6244C82B700D8BDEA /* MessageController.swift in Sources */,
 				71CF1972240BEE10006EB9E0 /* AppDelegate.swift in Sources */,
 				71D07750241D24CC00A8D2DD /* TableViewController.swift in Sources */,

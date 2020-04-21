@@ -9,5 +9,13 @@
 import UIKit
 
 class EditController: UIViewController {
+    @IBOutlet weak var textField: UITextField!
 
+    @IBOutlet weak var textFieldProjet: UITextField!
+    
+    
+    @IBAction func onProjetClick(sender: AnyObject) {
+        
+        performSegueWithIdentifier("segueChoix", sender: nil)
+    }
 }
