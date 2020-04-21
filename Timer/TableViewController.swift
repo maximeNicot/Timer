@@ -20,7 +20,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     var identifier = 1
     var monTitre = ""
     var editingBool = false
-    
+    var deplacementBool = false
     
     @IBAction func onMessage(sender: AnyObject) {
         mail()
@@ -111,19 +111,26 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
-        
-        
-        
-        
         cell.label.text = data[indexPath.row]
-        
-        
         
         cell.identifier = indexPath.row + 1000 + identifier
         cell.starter()
         //en dessous le probleme
-        //cell.labelTimer.text = dataTimer[indexPath.row]
-        dataTimer[indexPath.row] = cell.labelTimer.text!
+        
+        
+        if(deplacementBool){
+            
+            cell.chrono = Int(dataTimer[indexPath.row])!
+            //print(cell.chrono)
+            cell.setChrono()
+            cell.labelTimer.text = dataTimer[indexPath.row]
+        }
+        else{
+            dataTimer[indexPath.row] = cell.labelTimer.text!
+        }
+        if(indexPath.row == 2){
+            deplacementBool = false
+        }
         
         
         cell.delegate = self
@@ -134,11 +141,9 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         if(editingBool){
             cell.editSensInterdit()
         }
-            
         else{
             cell.editTriangle()
         }
-        
         
         return cell
     }
@@ -172,19 +177,22 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         return UITableViewCellEditingStyle.None
     }
     
+    // Changement de cell edidting
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        //let sourceCell = tableView.cellForRowAtIndexPath(sourceIndexPath) as! CustomTableViewCell
-        //let destinationCell = tableView.cellForRowAtIndexPath(destinationIndexPath) as! CustomTableViewCell
+        
+        //print(dataTimer)
         
         
         data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         
-        
+        //print(dataTimer)
+    
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
-        tableView.reloadData()
+        deplacementBool = true
+        //tableView.reloadData()
         }
     
     

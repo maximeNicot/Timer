@@ -69,6 +69,7 @@ class CustomTableViewCell: UITableViewCell {
         if(oneTimer){
             if(!isDossier && !isPageBlanche){
             self.timer =  NSTimer.scheduledTimerWithTimeInterval(1.0,target: self, selector: Selector("incrementer"), userInfo: nil, repeats: true)
+            
             oneTimer = false
             labelTimer.textColor = UIColor.redColor()
             
@@ -136,6 +137,9 @@ class CustomTableViewCell: UITableViewCell {
         }
     }
     
+    func setChrono(){
+        myDefaults.setValue(chrono, forKey: "keyChrono" + String(identifier))
+    }
     internal func incrementer(){
         chrono = myDefaults.integerForKey("keyChrono" + String(identifier))
         chrono += 1
