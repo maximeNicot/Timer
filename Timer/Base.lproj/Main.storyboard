@@ -304,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-333" y="-426"/>
+            <point key="canvasLocation" x="-333" y="-438"/>
         </scene>
         <!--PopUpController-->
         <scene sceneID="8ZY-qM-igN">
@@ -415,7 +415,7 @@
                                     <navigationItem title="Edit" id="KtJ-Hx-PK2">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ygz-tl-dD0">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="Cjt-W7-ooZ"/>
+                                                <segue destination="BYZ-38-t0r" kind="show" identifier="segueCancelToQuickStart" id="Cjt-W7-ooZ"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="gMp-P9-4Mx">
@@ -425,7 +425,6 @@
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="saveOnClick:" destination="hRV-XH-IkZ" eventType="touchUpInside" id="OQZ-Jj-af3"/>
-                                                    <segue destination="BYZ-38-t0r" kind="show" id="XBr-vZ-Q4V"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -463,11 +462,13 @@
                     <connections>
                         <outlet property="textField" destination="BsI-Xl-1CN" id="7EL-U6-1ly"/>
                         <outlet property="textFieldProjet" destination="Uwp-hH-XWh" id="jfi-6d-b2O"/>
+                        <segue destination="FUV-rP-BsP" kind="show" identifier="segueSaveToTableView" id="5uy-DA-dq4"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueSaveToQuickStart" id="LCS-yC-tH1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCE-yk-30u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-333" y="881"/>
+            <point key="canvasLocation" x="-856" y="257"/>
         </scene>
         <!--Choix Projet View Controller-->
         <scene sceneID="ry5-pf-OOK">
@@ -661,6 +662,7 @@
                         <outlet property="tableView" destination="c9H-5C-86h" id="J6p-aF-P6c"/>
                         <outlet property="viewTable" destination="c9H-5C-86h" id="mOi-g2-xqI"/>
                         <segue destination="6L8-Qt-1bb" kind="show" identifier="segueBrochure" id="WGY-wi-D1x"/>
+                        <segue destination="hRV-XH-IkZ" kind="show" identifier="segueEditController" id="xLD-Vb-CsE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouj-4m-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -669,9 +671,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nkl-at-XlH"/>
-        <segue reference="ukF-Rf-2IN"/>
-        <segue reference="wUo-Ox-rdX"/>
+        <segue reference="Cjt-W7-ooZ"/>
+        <segue reference="xLD-Vb-CsE"/>
+        <segue reference="5uy-DA-dq4"/>
         <segue reference="WGY-wi-D1x"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,6 +22,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     var editingBool = false
     var deplacementBool = false
     
+    var identifierCellEditing = -1
+    
     @IBAction func onMessage(sender: AnyObject) {
         mail()
     }
@@ -53,11 +55,13 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     }
     
     
+    
     @IBOutlet var viewTable: UITableView!
     
     @IBAction func editClick(sender: AnyObject) {
         if(!editingBool){
             tableView.setEditing(true, animated: true)
+            tableView.allowsSelectionDuringEditing = true
             editingBool = true
             tableView.reloadData()
         }
@@ -115,7 +119,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         
         cell.identifier = indexPath.row + 1000 + identifier
         cell.starter()
-        //en dessous le probleme
+        
         
         
         if(deplacementBool){
@@ -152,8 +156,16 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
+        if(!editingBool){
+            currentCell.activerTimer()
+        }
+        else{
+            dataDefaults.setValue(currentCell.label.text, forKey: "labelTextCell")
+            identifierCellEditing = indexPath.item
+            self.performSegueWithIdentifier("segueEditController", sender: self)
+            
+        }
         
-        currentCell.activerTimer()
     }
     
     
@@ -166,7 +178,13 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             vc.identifier = self.identifier
             vc.projectTitre = self.monTitre
         }
-        else{
+        else if(segue.identifier == "segueEditController"){
+            let vc = segue.destinationViewController as! EditController
+            vc.dataTableView = self.data
+            vc.identifierCell = self.identifierCellEditing
+            vc.identifierTableView = self.identifier
+            vc.fromQuickTask = false
+            
         }
         
     }
@@ -179,9 +197,6 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     
     // Changement de cell edidting
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        
-        //print(dataTimer)
-        
         
         data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
