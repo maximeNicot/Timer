@@ -118,6 +118,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
+        cell.identifier = indexPath.row + 10000
         cell.starter()
         
         //changement de section
@@ -165,16 +166,23 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
-        currentCell.activerTimer()
+        
+        if(!editingBool){
+            currentCell.activerTimer()
+        }
+        else{
+            
+        }
         
     }
     
     // changement de cell edit
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         
-        data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        
+        //data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
+        //dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
+        //let objMoving = data[sourceIndexPath.item]
+        //data.removeAtIndex(sourceIndexPath.item)
         
         
         //myDefaults.setValue(data, forKey: "keyData4" + String(identifier))

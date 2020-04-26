@@ -100,9 +100,16 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
      func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //blank space
-        let label = UILabel()
-        label.backgroundColor = UIColor.lightGrayColor()
-        return label
+        if(dataQuickTask.count == 0 && section == 0){
+            let label = UILabel()
+            return label
+        }
+        else{
+            let label = UILabel()
+            label.backgroundColor = UIColor.lightGrayColor()
+            return label
+        }
+        
     }
     
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
