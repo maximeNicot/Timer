@@ -17,7 +17,6 @@ class BrochureController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        data.append("aaaaaa")
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.delegate = self
@@ -50,6 +49,7 @@ class BrochureController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
+        cell.label.text = data[indexPath.row]
         return cell
         
     }

@@ -53,7 +53,8 @@ class CustomTableViewCell: UITableViewCell {
     
     func starter(){
         chrono = myDefaults.integerForKey("keyChrono" + String(identifier))
-        labelTimer.text = String(chrono)
+        //labelTimer.text = String(chrono)
+        afficherChronoFormat()
         
     }
 
@@ -121,6 +122,7 @@ class CustomTableViewCell: UITableViewCell {
         imagePausePlay.image = UIImage(named: "ImageTriangle")
     }
     
+    // enlever cette methode et utiliser une passe juste entre table view et view controller car dans tableView on obtient le total 
     func actualiserChronoDossier(){
         var allChronoDuDossier = ""
         
@@ -128,23 +130,62 @@ class CustomTableViewCell: UITableViewCell {
         if (myDefaults.stringForKey("totalChrono" + String(2)) != nil){
             allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(2))!
             myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7000))
+            //labelTimer.text = allChronoDuDossier
 
         }
         
         if (myDefaults.stringForKey("totalChrono" + String(102)) != nil){
             allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(102))!
             myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7001))
+            //labelTimer.text = allChronoDuDossier
         }
+        
     }
     
     func setChrono(){
         myDefaults.setValue(chrono, forKey: "keyChrono" + String(identifier))
     }
+    
     internal func incrementer(){
         chrono = myDefaults.integerForKey("keyChrono" + String(identifier))
         chrono += 1
         myDefaults.setValue(chrono, forKey: "keyChrono" + String(identifier))
-        labelTimer.text = String(chrono)
-        
+        afficherChronoFormat()
     }
+    
+    func afficherChronoFormat(){
+        var monString = ""
+        if(chrono < 60){
+            labelTimer.text = String(chrono)
+        }
+        else if(chrono < 3600){
+            monString = String(chrono/60) + ":"
+            if(chrono%60 < 10){
+                labelTimer.text = monString + "0" + String(chrono%60)
+            }
+            else{
+                labelTimer.text = monString + String(chrono%60)
+            }
+            
+        }
+        else{ // chrono > 3600
+            var myString = String((chrono/60)/60) + ":"
+            if((chrono/60)%60 < 10){
+                myString = String(chrono/60) + ":" + "0"
+            }
+            else{
+                myString = String(chrono/60) + ":"
+            }
+            
+            monString = String(chrono/60) + ":"
+            if(chrono%60 < 10){
+                labelTimer.text = myString + monString + "0" + String(chrono%60)
+            }
+            else{
+                labelTimer.text = myString + monString + String(chrono%60)
+            }
+        }
+
+    }
+    
 }

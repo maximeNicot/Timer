@@ -16,6 +16,10 @@ class EditController: UIViewController {
     var identifierCell = -1
     var nomProjet = ""
     
+    var dataDossier = [String]() //nom des dossiers
+    var identifierInstanceDossier = -1
+    var data = [String]()
+    var dataTimer = [String]()
     
     var dataTableView = [String]()
     var fromQuickTask = true
@@ -45,6 +49,20 @@ class EditController: UIViewController {
             
             myDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
             myDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
+            
+            let index = dataDossier.indexOf(nomProjet)
+            identifierInstanceDossier = 2 + (index! * 100)
+            
+            if(myDefaults.stringArrayForKey("keyData4" + String(identifierInstanceDossier)) != nil){
+                data = myDefaults.stringArrayForKey("keyData4" + String(identifierInstanceDossier))!
+                dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierInstanceDossier))!
+                
+                data.append(textField.text!)
+                dataTimer.append("0")
+                myDefaults.setValue(data, forKey: ("keyData4" + String(identifierInstanceDossier)))
+                myDefaults.setValue(dataTimer, forKey: ("keyDataTimer4" + String(identifierInstanceDossier)))
+            }
+            
             self.performSegueWithIdentifier("segueSaveToQuickStart", sender: self)
         }
             
@@ -65,7 +83,9 @@ class EditController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        if(myDefaults.stringArrayForKey("keyDossier1") != nil){
+            dataDossier = myDefaults.stringArrayForKey("keyDossier1")!
+        }
         
         textField.text = myDefaults.stringForKey("labelTextCell")!
         textFieldProjet.text = nomProjet
@@ -73,10 +93,6 @@ class EditController: UIViewController {
     }
     
     
-    
-
-
-
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
@@ -84,6 +100,9 @@ class EditController: UIViewController {
             let vc = segue.destinationViewController as! TableViewController
             vc.identifier = identifierTableView
         }
-
+        if(segue.identifier == "segueChoix"){
+            let vc = segue.destinationViewController as! ChoixProjetViewController
+            vc.identifierCell = self.identifierCell
+        }
     }
 }

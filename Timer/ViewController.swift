@@ -52,13 +52,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3") != nil){
             dataQuickTask = dataQuickTaskDefaults.stringArrayForKey("keyQuickTask3")!
             dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
-            
-            /*for i in dataQuickTask{
-                data.append(i)
-            }
-            for i in dataQuickTaskTimer{
-                //dataTimer.append(i)
-            }*/
         }
         if(dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche") != nil){
             dataPageBlanche = dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche")!
@@ -162,7 +155,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             cell.starter()
             cell.dossier()
             cell.actualiserChronoDossier()
-    
+            cell.starter()
+            
             cell.delegate = self
         }
        
@@ -175,10 +169,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
-        
-        print(String(currentCell.isDossier))
-        print(String(currentCell.isPageBlanche))
-        print(String(currentCell.isQuickStart))
         if(currentCell.isQuickStart){
             currentCell.activerTimer()
         }
@@ -193,9 +183,12 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             self.identifierTableViewController = indexPath.row * 200 + indexPath.section //1
             print(identifierTableViewController)
             if(self.monTitre == "All tasks"){
-                // Faire ce qu'il faut pour le bon rendu
+                self.performSegueWithIdentifier("segueAllTasks", sender: self)
             }
-            self.performSegueWithIdentifier("segueTableView", sender: self)
+            else{
+                self.performSegueWithIdentifier("segueTableView", sender: self)
+            }
+            
         }
     }
     

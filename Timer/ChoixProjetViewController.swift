@@ -18,6 +18,8 @@ class ChoixProjetViewController: UIViewController, UITableViewDelegate, UITableV
     var dataDossierDefaults = NSUserDefaults.standardUserDefaults()
     var nomProjetSend = ""
     
+    var identifierCell = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -121,7 +123,7 @@ class ChoixProjetViewController: UIViewController, UITableViewDelegate, UITableV
         if(segue.identifier == "segueEditController"){
             let vc = segue.destinationViewController as! EditController
             vc.nomProjet = nomProjetSend
-            
+            vc.identifierCell = self.identifierCell
         }
         else{
             

@@ -72,6 +72,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         }
         
     }
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     
 
@@ -92,7 +93,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
-        print(totalChrono)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,7 +111,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         return (nbRow)
     }
 
-    
+        // creation cell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
@@ -125,12 +126,12 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         if(deplacementBool){
             
             cell.chrono = Int(dataTimer[indexPath.row])!
-            //print(cell.chrono)
             cell.setChrono()
             cell.labelTimer.text = dataTimer[indexPath.row]
         }
         else{
-            dataTimer[indexPath.row] = cell.labelTimer.text!
+            //dataTimer[indexPath.row] = cell.labelTimer.text!
+            dataTimer[indexPath.row] = String(cell.chrono)
         }
         if(indexPath.row == 2){
             deplacementBool = false
@@ -165,13 +166,16 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             self.performSegueWithIdentifier("segueEditController", sender: self)
             
         }
-        
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
+        //ici probleme pas actualiser a la fin il faut repasser dans le totalchrono
         dataDefaults.setValue(totalChrono, forKey: "totalChrono" + String(identifier))
+        print("totalChrono" + String(totalChrono))
+        
         
         if(segue.identifier == "segueNewTask"){
             let vc = segue.destinationViewController as! NewTaskController
@@ -201,7 +205,6 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         
-        //print(dataTimer)
     
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))

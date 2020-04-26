@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		711319592455978F003970BB /* AllTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711319582455978F003970BB /* AllTasksViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		71726012244C995400B76515 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71726011244C995400B76515 /* Settings.bundle */; settings = {ASSET_TAGS = (); }; };
 		71726014244EFB0900B76515 /* ChoixProjetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71726013244EFB0900B76515 /* ChoixProjetViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7188CDFC242CD48E002541FD /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188CDFB242CD48E002541FD /* EditController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		711319582455978F003970BB /* AllTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTasksViewController.swift; sourceTree = "<group>"; };
 		71726011244C995400B76515 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		71726013244EFB0900B76515 /* ChoixProjetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoixProjetViewController.swift; sourceTree = "<group>"; };
 		7188CDFB242CD48E002541FD /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				71CF1971240BEE10006EB9E0 /* AppDelegate.swift */,
 				71CF197A240BEE10006EB9E0 /* LaunchScreen.storyboard */,
 				71CF1975240BEE10006EB9E0 /* Main.storyboard */,
+				711319582455978F003970BB /* AllTasksViewController.swift */,
 				71726013244EFB0900B76515 /* ChoixProjetViewController.swift */,
 				719867B5244C82B700D8BDEA /* MessageController.swift */,
 				719867B32449861000D8BDEA /* DatePickerController.swift */,
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71CF65A22424E6C300F43EB9 /* PopUpController.swift in Sources */,
+				711319592455978F003970BB /* AllTasksViewController.swift in Sources */,
 				719867B42449861000D8BDEA /* DatePickerController.swift in Sources */,
 				71CF1974240BEE10006EB9E0 /* ViewController.swift in Sources */,
 				71D07757241D359200A8D2DD /* CustomTableViewCell.swift in Sources */,
