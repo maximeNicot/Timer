@@ -15,6 +15,7 @@ class EditController: UIViewController {
     var dataQuickTaskTimer = [String]()
     var identifierCell = -1
     var nomProjet = ""
+    var nomTache = ""
     
     var dataDossier = [String]() //nom des dossiers
     var identifierInstanceDossier = -1
@@ -29,6 +30,10 @@ class EditController: UIViewController {
     @IBOutlet weak var textFieldProjet: UITextField!
     
     @IBAction func onProjetClick(sender: AnyObject) {
+        //pour lier le nom au changement de page
+        
+        myDefaults.setValue((textField.text), forKey: "nomTask")
+        
         performSegueWithIdentifier("segueChoix", sender: nil)
     }
     
@@ -36,10 +41,10 @@ class EditController: UIViewController {
     
     @IBAction func saveOnClick(sender: AnyObject) {
         
-        // pour l'instant que supprimmer, faut aussi ajouter au bon projet
-        
         //ouvert depuis le ViewController
         if(fromQuickTask){
+            myDefaults.setValue(("Quick Task"), forKey: "nomTask")
+            
             if(myDefaults.stringArrayForKey("keyQuickTask3") != nil){
                 dataQuickTask = myDefaults.stringArrayForKey("keyQuickTask3")!
                 dataQuickTaskTimer = myDefaults.stringArrayForKey("keyQuickTaskTimer3")!
@@ -58,11 +63,17 @@ class EditController: UIViewController {
                 dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierInstanceDossier))!
                 
                 data.append(textField.text!)
-                dataTimer.append("0")
+                print(textField.text!)
+                
+               
+                dataTimer.append("100")
+               
                 myDefaults.setValue(data, forKey: ("keyData4" + String(identifierInstanceDossier)))
                 myDefaults.setValue(dataTimer, forKey: ("keyDataTimer4" + String(identifierInstanceDossier)))
             }
             
+            //myDefaults.setValue(0, forKey: "keyChrono" + String(identifierCell))
+
             self.performSegueWithIdentifier("segueSaveToQuickStart", sender: self)
         }
             
@@ -83,11 +94,16 @@ class EditController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         if(myDefaults.stringArrayForKey("keyDossier1") != nil){
             dataDossier = myDefaults.stringArrayForKey("keyDossier1")!
         }
         
         textField.text = myDefaults.stringForKey("labelTextCell")!
+        if(myDefaults.stringForKey("nomTask") != nil){
+            textField.text = myDefaults.stringForKey("nomTask")!
+        }
         textFieldProjet.text = nomProjet
         
     }

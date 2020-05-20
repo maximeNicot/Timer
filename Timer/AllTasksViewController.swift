@@ -139,8 +139,9 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
                 dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSingleTask))!
                 
             }
-            //print(data)
-            //print(dataTimer)
+            print(data)
+            
+            print(dataTimer)
             cell.label.text = data[indexPath.row]
         }
         else {

@@ -71,20 +71,16 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     
     @IBAction func quickStart(sender: AnyObject) {
-        // juste pour le premier quick start qui est fait a partir d'un tab vide donc 0
         if(dataQuickTask.count == 0 ){
             dataQuickTask.append("Quick Task " + String(1))
-            //data.append("Quick Task " + String(1))
         }
         else {
             dataQuickTask.append("Quick Task " + String(dataQuickTask.count + 1))
-            //data.append("Quick Task " + String(dataQuickTask.count + 1))
         }
         
         dataQuickTaskTimer.append("0")
         dataQuickTaskDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
         dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
-        
        
         dataTimer.append("0")
         
@@ -94,7 +90,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     
@@ -135,11 +130,13 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
         if(indexPath.section == 0){
-        dataQuickTaskTimer[indexPath.row] = cell.labelTimer.text!
+        //dataQuickTaskTimer[indexPath.row] = cell.labelTimer.text!
+            
         cell.label.text = dataQuickTask[indexPath.row]
         
         cell.identifier = indexPath.row + 10000
         cell.starter()
+        
         cell.quickStart()
         cell.delegate = self
         }

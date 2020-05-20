@@ -111,6 +111,7 @@ class CustomTableViewCell: UITableViewCell {
         isPageBlanche = false
         boutonDroite.hidden = false
         boutonDroite.enabled = true
+        
     }
     
     

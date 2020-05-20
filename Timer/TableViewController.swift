@@ -130,8 +130,10 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             cell.labelTimer.text = dataTimer[indexPath.row]
         }
         else{
-            //dataTimer[indexPath.row] = cell.labelTimer.text!
+            //print(dataTimer)
             dataTimer[indexPath.row] = String(cell.chrono)
+            
+            
         }
         if(indexPath.row == 2){
             deplacementBool = false
@@ -140,7 +142,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         
         cell.delegate = self
         
-        
+        // pour le total des dossiers
         totalChrono = totalChrono + cell.chrono
         
         if(editingBool){

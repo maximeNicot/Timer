@@ -45,8 +45,11 @@ class PopUpController: UIViewController {
         dataQuickTask.removeAtIndex(identifierCell-10000)
         dataQuickTaskTimer.removeAtIndex(identifierCell-10000)
         
+        
         myDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
         myDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
+        
+        myDefaults.setValue(0, forKey: "keyChrono" + String(identifierCell)) // nil
     }
 
     
