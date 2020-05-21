@@ -153,6 +153,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             cell.label.text = dataPageBlanche[indexPath.row]
             cell.identifier = indexPath.row + 8000
+            cell.actualiserChronoPageBlanche()
             cell.starter()
             cell.pageBlanche()
             
@@ -228,7 +229,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             let vc = segue.destinationViewController as! TableViewController
             vc.identifier = self.identifierTableViewController
             // bug en dessous ?
-            //vc.monTitre =  self.monTitre
+            vc.monTitre =  self.monTitre
             
         }
         if(segue.identifier == "seguePopUp"){

@@ -193,7 +193,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         print(identifier)
         parcourirTableView()
         dataDefaults.setValue(totalChrono, forKey: "totalChrono" + String(identifier))
-        print("totalChrono" + String(totalChrono))
+        
         
         
         if(segue.identifier == "segueNewTask"){

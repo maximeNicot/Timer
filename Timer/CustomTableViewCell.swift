@@ -144,9 +144,21 @@ class CustomTableViewCell: UITableViewCell {
                 
             }
         }
+    }
+    
+    func actualiserChronoPageBlanche(){
+        var allChronoPageBlanche = ""
         
-       
+        //dataPageBlanche = dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche")!
         
+        for i in 0...1{
+            if (myDefaults.stringForKey("totalChrono" + String(1 + (100 * i))) != nil){
+                allChronoPageBlanche = myDefaults.stringForKey("totalChrono" + String(1 + (100 * i)))!
+                myDefaults.setValue(allChronoPageBlanche, forKey: "keyChrono" + String(8000 + i))
+                //labelTimer.text = allChronoDuDossier
+                
+            }
+        }
     }
     
     func setChrono(){
