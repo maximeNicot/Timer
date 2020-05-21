@@ -54,6 +54,10 @@ class PopUpController: UIViewController {
         myDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
         
         myDefaults.setValue(0, forKey: "keyChrono" + String(identifierCell)) // nil
+        
+        let currentCell = CustomTableViewCell()
+        currentCell.identifier = identifierCell
+        currentCell.effacerChronoSauvegarder()
     }
 
     

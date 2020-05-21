@@ -156,6 +156,10 @@ class CustomTableViewCell: UITableViewCell {
         afficherChronoFormat()
     }
     
+    func effacerChronoSauvegarder(){
+        myDefaults.setValue(0, forKey: "keyChrono" + String(identifier))
+    }
+    
     func afficherChronoFormat(){
         var monString = ""
         if(chrono < 60){
