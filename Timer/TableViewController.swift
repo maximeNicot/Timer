@@ -23,6 +23,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     var editingBool = false
     var deplacementBool = false
     
+    var fromQuickStart = false
+    
     var identifierCellEditing = -1
     
     @IBAction func onMessage(sender: AnyObject) {
@@ -83,7 +85,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
 
         
         navigationBar.topItem?.title = monTitre
-        print("identifier" + String(identifier))
+        //print("identifier" + String(identifier))
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
       
@@ -95,7 +97,10 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
-        
+        print("data du TableViewController")
+        print(data)
+        print("dataTimer du tableViewController")
+        print(dataTimer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -132,8 +137,16 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             cell.labelTimer.text = dataTimer[indexPath.row]
         }
         else{
-            //print(dataTimer)
-            dataTimer[indexPath.row] = String(cell.chrono)
+            //Pour bien envoyer le timer de la quick task dans la nouvelle du dossier
+            if(fromQuickStart){
+                cell.chrono = Int(dataTimer[indexPath.row])!
+                cell.setChrono()
+                cell.afficherChronoFormat()
+            }
+            else{
+                dataTimer[indexPath.row] = String(cell.chrono)
+            }
+            
             
             
         }

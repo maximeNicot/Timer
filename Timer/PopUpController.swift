@@ -35,6 +35,10 @@ class PopUpController: UIViewController {
 
     @IBAction func CreateNewTask(sender: AnyObject) {
         
+        myDefaults.setValue(dataQuickTask[identifierCell-10000], forKey: "nomTask")
+        //myDefaults.setValue(dataQuickTask[identifierCell-10000], forKey: "timerQuickTaskUnique")
+        
+        
     }
     
     @IBAction func AddToTask(sender: AnyObject) {

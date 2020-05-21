@@ -26,6 +26,8 @@ class EditController: UIViewController {
     var fromQuickTask = true
     var fromTableView = false
     
+    var changerTimerTableViewController = false
+    
     var identifierTableView = -1
     
     @IBOutlet weak var textField: UITextField!
@@ -52,6 +54,10 @@ class EditController: UIViewController {
                 dataQuickTask = myDefaults.stringArrayForKey("keyQuickTask3")!
                 dataQuickTaskTimer = myDefaults.stringArrayForKey("keyQuickTaskTimer3")!
             }
+            print("Data quick task")
+            print(dataQuickTask)
+            print("Data quick task timer")
+            print(dataQuickTaskTimer)
             dataQuickTask.removeAtIndex(identifierCell-10000)
             dataQuickTaskTimer.removeAtIndex(identifierCell-10000)
             
@@ -69,15 +75,17 @@ class EditController: UIViewController {
                 print(textField.text!)
                 
                
-                dataTimer.append("100")
+                // ici append le bon timer
+                dataTimer.append((myDefaults.stringForKey("timerQuickTaskUnique"))!)
                
                 myDefaults.setValue(data, forKey: ("keyData4" + String(identifierInstanceDossier)))
                 myDefaults.setValue(dataTimer, forKey: ("keyDataTimer4" + String(identifierInstanceDossier)))
             }
             
             //myDefaults.setValue(0, forKey: "keyChrono" + String(identifierCell))
-
-            self.performSegueWithIdentifier("segueSaveToQuickStart", sender: self)
+            changerTimerTableViewController = true
+            identifierTableView = identifierInstanceDossier
+            self.performSegueWithIdentifier("segueSaveToTableView", sender: self)
         }
             
         // ouvert depuis TableViewController
@@ -149,6 +157,8 @@ class EditController: UIViewController {
         if(segue.identifier == "segueSaveToTableView"){
             let vc = segue.destinationViewController as! TableViewController
             vc.identifier = identifierTableView
+            vc.fromQuickStart = true
+            
         }
         if(segue.identifier == "segueChoix"){
             let vc = segue.destinationViewController as! ChoixProjetViewController

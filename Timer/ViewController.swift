@@ -132,13 +132,16 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(indexPath.section == 0){
         //dataQuickTaskTimer[indexPath.row] = cell.labelTimer.text!
             
-        cell.label.text = dataQuickTask[indexPath.row]
+            cell.label.text = dataQuickTask[indexPath.row]
+            
+            dataQuickTaskTimer[indexPath.row] = String(cell.chrono)
+            
+            
+            cell.identifier = indexPath.row + 10000
+            cell.starter()
         
-        cell.identifier = indexPath.row + 10000
-        cell.starter()
-        
-        cell.quickStart()
-        cell.delegate = self
+            cell.quickStart()
+            cell.delegate = self
         }
         
         else if(indexPath.section == 1){
@@ -210,6 +213,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(segue.identifier == "seguePopUp"){
             let vc = segue.destinationViewController as! PopUpController
             vc.identifierCell = sender as! Int
+            dataQuickTaskDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
+            dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
             
         }
         else{
@@ -220,8 +225,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     //protocol
     func SegueFromCell(mydata identifierCell: AnyObject){
-        
-        print("Identifier cell " + String(identifierCell))
         self.performSegueWithIdentifier("seguePopUp", sender: identifierCell)
     }
 

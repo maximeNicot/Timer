@@ -48,6 +48,7 @@ class CustomTableViewCell: UITableViewCell {
         
         self.delegate.SegueFromCell(mydata: identifier)
         myDefaults.setValue(label.text, forKey: "labelTextCell") // Plus facile de passe la valeur comme ça finalement
+        myDefaults.setValue(chrono, forKey: "timerQuickTaskUnique")
          
     }
     
@@ -145,6 +146,7 @@ class CustomTableViewCell: UITableViewCell {
     
     func setChrono(){
         myDefaults.setValue(chrono, forKey: "keyChrono" + String(identifier))
+        
     }
     
     internal func incrementer(){
