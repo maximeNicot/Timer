@@ -158,7 +158,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         cell.delegate = self
         
         // pour le total des dossiers
-        totalChrono = totalChrono + cell.chrono
+        //totalChrono = totalChrono + cell.chrono
         
         if(editingBool){
             cell.editSensInterdit()
@@ -189,8 +189,9 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
-        
-        //ici probleme pas actualiser a la fin il faut repasser dans le totalchrono
+        print("identifier TableView avant total chrono")
+        print(identifier)
+        parcourirTableView()
         dataDefaults.setValue(totalChrono, forKey: "totalChrono" + String(identifier))
         print("totalChrono" + String(totalChrono))
         
@@ -215,6 +216,12 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     }
    
 
+    func parcourirTableView(){
+        for cell in tableView.visibleCells as! [CustomTableViewCell] {
+            totalChrono = totalChrono + cell.chrono
+        }
+    }
+    
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.None

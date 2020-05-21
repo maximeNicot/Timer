@@ -134,8 +134,9 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             cell.label.text = dataQuickTask[indexPath.row]
             
-            dataQuickTaskTimer[indexPath.row] = String(cell.chrono)
-            
+            print("dataQuickTaskChrono ViewController")
+            print(dataQuickTaskTimer)
+            cell.chrono = Int(dataQuickTaskTimer[indexPath.row])!
             
             cell.identifier = indexPath.row + 10000
             cell.starter()
@@ -199,6 +200,12 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    func parcourirTableView(){
+        for cell in tableView.visibleCells as! [CustomTableViewCell] {
+            
+        }
+    }
+    
     // lancé avant chaque segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print(segue.identifier)
@@ -206,7 +213,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(segue.identifier == "segueTableView"){
             let vc = segue.destinationViewController as! TableViewController
             vc.identifier = self.identifierTableViewController
-            // bug en dessous
+            // bug en dessous ?
             //vc.monTitre =  self.monTitre
             
         }

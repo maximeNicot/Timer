@@ -128,19 +128,19 @@ class CustomTableViewCell: UITableViewCell {
     func actualiserChronoDossier(){
         var allChronoDuDossier = ""
         
-        // faire une boucle pour chaque dossier identifier
-        if (myDefaults.stringForKey("totalChrono" + String(2)) != nil){
-            allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(2))!
-            myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7000))
-            //labelTimer.text = allChronoDuDossier
-
+        var dataDossier = myDefaults.stringArrayForKey("keyDossier1")!
+        var nombreDossier = dataDossier.count
+        
+        for i in 0...nombreDossier-1{
+            if (myDefaults.stringForKey("totalChrono" + String(2 + (100 * i))) != nil){
+                allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(2 + (100 * i)))!
+                myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7000 + i))
+                //labelTimer.text = allChronoDuDossier
+                
+            }
         }
         
-        if (myDefaults.stringForKey("totalChrono" + String(102)) != nil){
-            allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(102))!
-            myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7001))
-            //labelTimer.text = allChronoDuDossier
-        }
+       
         
     }
     
