@@ -134,14 +134,18 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             cell.label.text = dataQuickTask[indexPath.row]
             
-            print("dataQuickTaskChrono ViewController")
-            print(dataQuickTaskTimer)
-            cell.chrono = Int(dataQuickTaskTimer[indexPath.row])!
+            
             
             cell.identifier = indexPath.row + 10000
             cell.starter()
         
             cell.quickStart()
+            
+            print("dataQuickTaskChrono ViewController")
+            print(dataQuickTaskTimer)
+            cell.chrono = Int(dataQuickTaskTimer[indexPath.row])!
+            cell.labelTimer.text = dataQuickTaskTimer[indexPath.row]
+            cell.majChrono()
             cell.delegate = self
         }
         
@@ -201,14 +205,24 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     
     func parcourirTableView(){
+        var indice = 0
         for cell in tableView.visibleCells as! [CustomTableViewCell] {
+            //pour juste avoir les quick start
+            if(indice < dataQuickTaskTimer.count){
+                //cell.chrono = Int(dataQuickTaskTimer[indice])!
+                dataQuickTaskTimer[indice] = String(cell.chrono)
+                indice = indice + 1
+            }
             
         }
     }
     
     // lancé avant chaque segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(segue.identifier)
+        dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
+        parcourirTableView()
+        dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
+        print(dataQuickTaskTimer)
         
         if(segue.identifier == "segueTableView"){
             let vc = segue.destinationViewController as! TableViewController

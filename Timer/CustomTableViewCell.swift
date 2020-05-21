@@ -58,6 +58,11 @@ class CustomTableViewCell: UITableViewCell {
         afficherChronoFormat()
         
     }
+    
+    func majChrono(){
+        myDefaults.setValue(chrono, forKey: "keyChrono" + String(identifier))
+        afficherChronoFormat()
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         
@@ -128,8 +133,8 @@ class CustomTableViewCell: UITableViewCell {
     func actualiserChronoDossier(){
         var allChronoDuDossier = ""
         
-        var dataDossier = myDefaults.stringArrayForKey("keyDossier1")!
-        var nombreDossier = dataDossier.count
+        let dataDossier = myDefaults.stringArrayForKey("keyDossier1")!
+        let nombreDossier = dataDossier.count
         
         for i in 0...nombreDossier-1{
             if (myDefaults.stringForKey("totalChrono" + String(2 + (100 * i))) != nil){
