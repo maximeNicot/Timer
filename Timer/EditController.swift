@@ -24,6 +24,8 @@ class EditController: UIViewController {
     
     var dataTableView = [String]()
     var fromQuickTask = true
+    var fromTableView = false
+    
     var identifierTableView = -1
     
     @IBOutlet weak var textField: UITextField!
@@ -42,6 +44,7 @@ class EditController: UIViewController {
     @IBAction func saveOnClick(sender: AnyObject) {
         
         //ouvert depuis le ViewController
+        
         if(fromQuickTask){
             myDefaults.setValue(("Quick Task"), forKey: "nomTask")
             
@@ -78,10 +81,31 @@ class EditController: UIViewController {
         }
             
         // ouvert depuis TableViewController
-        else{
-            dataTableView[identifierCell] = textField.text!
+        else if(fromTableView || (myDefaults.boolForKey("depuisTableViewController") == true)){
+            myDefaults.setValue(false, forKey: "depuisTableViewController")
             
-            myDefaults.setValue(dataTableView, forKey: "keyData4" + String(identifierTableView))
+            
+            // ici pour renvoyer sur la bonne tableView
+            let index = dataDossier.indexOf(nomProjet)
+            identifierInstanceDossier = 2 + (index! * 100)
+            
+            if(myDefaults.stringArrayForKey("keyData4" + String(identifierInstanceDossier)) != nil){
+                data = myDefaults.stringArrayForKey("keyData4" + String(identifierInstanceDossier))!
+                dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierInstanceDossier))!
+                
+                //on veut pas append
+                data[identifierCell] = textField.text!
+                dataTimer[identifierCell] = "100"
+               
+                
+                
+                myDefaults.setValue(data, forKey: ("keyData4" + String(identifierInstanceDossier)))
+                myDefaults.setValue(dataTimer, forKey: ("keyDataTimer4" + String(identifierInstanceDossier)))
+            }
+
+            
+            
+            identifierTableView = identifierInstanceDossier
             self.performSegueWithIdentifier("segueSaveToTableView", sender: self)
             
         }
@@ -93,11 +117,17 @@ class EditController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         
         
         if(myDefaults.stringArrayForKey("keyDossier1") != nil){
             dataDossier = myDefaults.stringArrayForKey("keyDossier1")!
+        }
+      
+        
+        if(fromTableView || (myDefaults.boolForKey("depuisTableViewController") == true)){
+            myDefaults.setValue(fromTableView, forKey: "depuisTableViewController")
+            fromQuickTask = false
         }
         
         textField.text = myDefaults.stringForKey("labelTextCell")!
@@ -105,6 +135,10 @@ class EditController: UIViewController {
             textField.text = myDefaults.stringForKey("nomTask")!
         }
         textFieldProjet.text = nomProjet
+        
+        if(!fromQuickTask){
+            fromTableView = true
+        }
         
     }
     

@@ -39,7 +39,9 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         
        
         if(myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask)) != nil){
+            
             data = myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask))!
+            
             dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSingleTask))!
             
         }
@@ -95,9 +97,12 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
     
     //count
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if(section == 0){
             ancienSectionCount = section
-            return data.count-1
+            data = myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask))!
+            
+            return data.count
         }
         else {
             if(ancienSectionCount != section){
@@ -121,7 +126,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         cell.identifier = indexPath.row + 10000
         cell.starter()
         
-        //changement de section
+        //changement de section, pas de data général, on disperse
         if(ancienSection != indexPath.section){
             identifierPourBoucle = (2 + (indexPath.section * 100)-100) // -100 pour le single task
             if(myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle)) != nil){
@@ -135,6 +140,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
             
             //pour single task du debut
             if(myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask)) != nil){
+                
                 data = myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask))!
                 dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSingleTask))!
                 
@@ -162,6 +168,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         ancienSection = indexPath.section
         return cell
     }
+    
     
     // click sur cell entiere
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

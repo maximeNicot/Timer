@@ -15,6 +15,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     var dataDefaults = NSUserDefaults.standardUserDefaults()
     var dataTimerDefaults = NSUserDefaults.standardUserDefaults()
     
+    var nomTache = ""
     
     var totalChrono = 0
     var identifier = 1
@@ -80,6 +81,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         super.viewDidLoad()
         tableView.setEditing(false, animated: false)
 
+        
         navigationBar.topItem?.title = monTitre
         print("identifier" + String(identifier))
         
@@ -159,6 +161,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
+        nomTache = currentCell.label.text!
         if(!editingBool){
             currentCell.activerTimer()
         }
@@ -190,6 +193,9 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             vc.identifierCell = self.identifierCellEditing
             vc.identifierTableView = self.identifier
             vc.fromQuickTask = false
+            vc.fromTableView = true
+            
+            dataDefaults.setValue(nomTache, forKey: "nomTask")
             
         }
         

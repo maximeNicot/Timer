@@ -203,7 +203,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if(segue.identifier == "segueTableView"){
             let vc = segue.destinationViewController as! TableViewController
             vc.identifier = self.identifierTableViewController
-            vc.monTitre =  self.monTitre
+            // bug en dessous
+            //vc.monTitre =  self.monTitre
             
         }
         if(segue.identifier == "seguePopUp"){
