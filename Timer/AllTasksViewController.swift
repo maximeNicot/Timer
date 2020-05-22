@@ -56,21 +56,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         //construction du data all dossier
-        for i in 0...dataDossier.count{
-            identifierPourBoucle = (2 + (i * 100)-100) // -100 pour le single task
-            if(myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle)) != nil){
-                data = myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle))!
-                dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierPourBoucle))!
-            }
-            dataAllDossier.append(data)
-            dataAllDossierTimer.append(dataTimer)
-            print("DATA ALL DOSSIER")
-            print(dataAllDossier)
-            print(dataAllDossier.count)
-            print("DATA ALL TIMER")
-            print(dataAllDossierTimer)
-            print(dataAllDossierTimer.count)
-        }
+        constructionAllDossier()
         
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.delegate = self
@@ -90,6 +76,9 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.setEditing(false, animated: false)
             editingBool = false
             tableView.reloadData()
+            print("----")
+            print(dataAllDossier)
+            print("----")
         }
     }
     
@@ -131,8 +120,9 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         cell.starter()
         cell.label.text = dataAllDossier[indexPath.section][indexPath.row]
         
+        //dedois pas add timer donc sa bug ici
+        //cell.chrono = Int(dataAllDossierTimer[indexPath.section][indexPath.row])!
         
-        cell.chrono = Int(dataAllDossierTimer[indexPath.section][indexPath.row])!
         cell.setChrono()
         
         if(editingBool){
@@ -166,19 +156,94 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         
         //data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         //dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        //let objMoving = data[sourceIndexPath.item]
-        //data.removeAtIndex(sourceIndexPath.item)
         
         
         //myDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         //myDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
+        print("Source : "  + String(sourceIndexPath.row) + " Destination : " + String(destinationIndexPath.row) )
+        print("Source section : " + String(sourceIndexPath.section) + " Destination section : " + String(destinationIndexPath.section))
+        
+        
+        var dataDossierSource = [String]()
+        var dataDossierDestination = [String]()
+        var dataDossierSourceTimer = [String]()
+        var dataDossierDestinationTimer = [String]()
+        var identifierSource = -1
+        var identifierDestination = -1
+        
+        if(sourceIndexPath.section == 0){
+            identifierSource = 1
+            dataDossierSource = myDefaults.stringArrayForKey("keyData4" + String(identifierSource))!
+            dataDossierSourceTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSource))!
+        }
+        else {
+            identifierSource = (2 + (sourceIndexPath.section * 100)-100)
+            dataDossierSource = myDefaults.stringArrayForKey("keyData4" + String(identifierSource))!
+            dataDossierSourceTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSource))!
+        }
+        
+        if(destinationIndexPath.section == 0){
+            identifierDestination = 1
+            dataDossierDestination = myDefaults.stringArrayForKey("keyData4" + String(identifierDestination))!
+            dataDossierDestinationTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierDestination))!
+        }
+        else {
+            identifierDestination = (2 + (destinationIndexPath.section * 100)-100)
+            dataDossierDestination = myDefaults.stringArrayForKey("keyData4" + String(identifierDestination))!
+            dataDossierDestinationTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierDestination))!
+        }
+        
+        print("----------Dossier SOurce avant save---------")
+        print(dataDossierSource)
+        print("--------Dossier Destination avant save-----------")
+        print(dataDossierDestination)
+        
+        
+        dataDossierDestination.insert(dataDossierSource.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
+        dataDossierDestinationTimer.insert(dataDossierSourceTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
+        
+        myDefaults.setValue(dataDossierSource, forKey: "keyData4" + String(identifierSource))
+        myDefaults.setValue(dataDossierSourceTimer, forKey: "keyDataTimer4" + String(identifierSource))
+        myDefaults.setValue(dataDossierDestination, forKey: "keyData4" + String(identifierDestination))
+        myDefaults.setValue(dataDossierDestinationTimer, forKey: "keyDataTimer4" + String(identifierDestination))
+        
+        
+        print("-------------------")
+        print(dataDossierSource)
+        print("-------------------")
+        print(dataDossierDestination)
+        
         deplacementBool = true
+        constructionAllDossier()
         
     }
     
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.None
+    }
+    
+    func constructionAllDossier(){
+        dataAllDossier.removeAll()
+        dataAllDossierTimer.removeAll()
+        for i in 0...dataDossier.count{
+            
+            identifierPourBoucle = (2 + (i * 100)-100) // -100 pour le single task
+            if(myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle)) != nil){
+                data = myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle))!
+                dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierPourBoucle))!
+            }
+            dataAllDossier.append(data)
+            dataAllDossierTimer.append(dataTimer)
+            myDefaults.setValue(dataAllDossier, forKey: "dataAllDossier")
+            myDefaults.setValue(dataAllDossierTimer, forKey: "dataAllDossierTimer")
+            print("DATA ALL DOSSIER")
+            print(dataAllDossier)
+            print(dataAllDossier.count)
+            print("DATA ALL TIMER")
+            print(dataAllDossierTimer)
+            print(dataAllDossierTimer.count)
+        }
     }
         
 }

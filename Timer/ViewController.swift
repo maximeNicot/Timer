@@ -220,7 +220,9 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     // lancé avant chaque segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(dataQuickTaskDefaults.stringArrayForKey("keyQuickTaskTimer3") != nil){
         dataQuickTaskTimer = dataQuickTaskTimerDefaults.stringArrayForKey("keyQuickTaskTimer3")!
+        }
         parcourirTableView()
         dataQuickTaskTimerDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
         print(dataQuickTaskTimer)

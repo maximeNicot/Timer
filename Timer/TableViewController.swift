@@ -238,7 +238,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
         deplacementBool = true
-        //tableView.reloadData()
+        
         }
     
     
