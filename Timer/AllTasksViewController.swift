@@ -209,9 +209,9 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         myDefaults.setValue(dataDossierDestinationTimer, forKey: "keyDataTimer4" + String(identifierDestination))
         
         
-        print("-------------------")
+        print("---------Dossier SOurce apres save----------")
         print(dataDossierSource)
-        print("-------------------")
+        print("---------Dossier Destination apres save----------")
         print(dataDossierDestination)
         
         deplacementBool = true
@@ -229,7 +229,11 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         for i in 0...dataDossier.count{
             
             identifierPourBoucle = (2 + (i * 100)-100) // -100 pour le single task
-            if(myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle)) != nil){
+            if(i == 0){
+                data = myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask))!
+                dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSingleTask))!
+            }
+            else if(myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle)) != nil){
                 data = myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle))!
                 dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierPourBoucle))!
             }
