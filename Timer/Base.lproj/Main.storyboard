@@ -711,6 +711,11 @@
                                         </connections>
                                     </button>
                                 </barButtonItem>
+                                <barButtonItem title="Effacer" id="aFC-XI-oUh">
+                                    <connections>
+                                        <action selector="effacerTacheOnClick:" destination="FUV-rP-BsP" id="3te-SW-SrZ"/>
+                                    </connections>
+                                </barButtonItem>
                             </items>
                         </toolbar>
                         <prototypes>
@@ -729,6 +734,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="effacerTache" destination="aFC-XI-oUh" id="7KJ-rc-V4p"/>
                         <outlet property="navigationBar" destination="hbg-OC-GhD" id="EA6-db-KwG"/>
                         <outlet property="tableView" destination="c9H-5C-86h" id="J6p-aF-P6c"/>
                         <outlet property="viewTable" destination="c9H-5C-86h" id="mOi-g2-xqI"/>

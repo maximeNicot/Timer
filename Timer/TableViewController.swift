@@ -27,6 +27,16 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     
     var identifierCellEditing = -1
     
+    var editEffacerTacheBool = false
+    
+    @IBOutlet weak var effacerTache: UIBarButtonItem!
+    
+    @IBAction func effacerTacheOnClick(sender: AnyObject) {
+        editEffacerTacheBool = !editEffacerTacheBool
+        parcourirEffacerButton()
+        tableView.reloadData()
+    }
+    
     @IBAction func onMessage(sender: AnyObject) {
         mail()
     }
@@ -43,7 +53,6 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         
         if (!MFMailComposeViewController.canSendMail()){
             print("Pas autorisation d'envois de mail")
-            
         }
         else{
             print("Send mail OK")
@@ -123,49 +132,50 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
-        cell.label.text = data[indexPath.row]
-        
-        cell.identifier = indexPath.row + 1000 + identifier
-        print("-----identifier cell table view-----")
-        print(cell.identifier)
-        cell.starter()
         
         
+       
+            cell.label.text = data[indexPath.row]
         
-        if(deplacementBool){
+            cell.identifier = indexPath.row + 1000 + identifier
+            print("-----identifier cell table view-----")
+            print(cell.identifier)
+            cell.starter()
+        
+        
+        
+            if(deplacementBool){
             
-            cell.chrono = Int(dataTimer[indexPath.row])!
-            cell.setChrono()
-            cell.labelTimer.text = dataTimer[indexPath.row]
-        }
-        else{
-            //Pour bien envoyer le timer de la quick task dans la nouvelle du dossier
-            if(fromQuickStart){
                 cell.chrono = Int(dataTimer[indexPath.row])!
                 cell.setChrono()
-                cell.afficherChronoFormat()
+                cell.labelTimer.text = dataTimer[indexPath.row]
             }
             else{
-                dataTimer[indexPath.row] = String(cell.chrono)
+            //Pour bien envoyer le timer de la quick task dans la nouvelle du dossier
+                if(fromQuickStart){
+                    cell.chrono = Int(dataTimer[indexPath.row])!
+                    cell.setChrono()
+                    cell.afficherChronoFormat()
+                }
+                else{
+                    dataTimer[indexPath.row] = String(cell.chrono)
+                }
+            
+            
+            
             }
-            
-            
-            
-        }
-        if(indexPath.row == 2){
-            deplacementBool = false
-        }
+            if(indexPath.row == 2){
+                deplacementBool = false
+            }
         
         
-        cell.delegate = self
-        
-        
-        if(editingBool){
-            cell.editSensInterdit()
-        }
-        else{
-            cell.editTriangle()
-        }
+            cell.delegate = self
+            if(editingBool){
+                cell.editSensInterdit()
+            }
+            else{
+                cell.editTriangle()
+            }
         
         return cell
     }
@@ -174,16 +184,36 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
-        nomTache = currentCell.label.text!
-        if(!editingBool){
-            currentCell.activerTimer()
-        }
-        else{
-            dataDefaults.setValue(currentCell.label.text, forKey: "labelTextCell")
-            identifierCellEditing = indexPath.item
-            self.performSegueWithIdentifier("segueEditController", sender: self)
+        
+        if(editEffacerTacheBool){
+            //effacer la tache du dossier et son chrono avec
+            
+            data.removeAtIndex(indexPath.row)
+            dataTimer.removeAtIndex(indexPath.row)
+            editEffacerTacheBool = !editEffacerTacheBool
+            parcourirEffacerButton()
+            dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
+            dataTimerDefaults.setValue(data, forKey: "keyDataTimer4" + String(identifier))
+            
+            currentCell.effacerChronoSauvegarder()
+            
+            
+            tableView.reloadData()
             
         }
+        else {
+            nomTache = currentCell.label.text!
+            if(!editingBool){
+                currentCell.activerTimer()
+            }
+            else{
+                dataDefaults.setValue(currentCell.label.text, forKey: "labelTextCell")
+                identifierCellEditing = indexPath.item
+                self.performSegueWithIdentifier("segueEditController", sender: self)
+                
+            }
+        }
+        
     }
     
     
@@ -222,6 +252,11 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         }
     }
     
+    func parcourirEffacerButton(){
+        for cell in tableView.visibleCells as! [CustomTableViewCell] {
+            cell.activerEffacerButton()
+        }
+    }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.None
@@ -240,6 +275,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         deplacementBool = true
         
         }
+    
     
     
     //protocol
