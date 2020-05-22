@@ -51,5 +51,191 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Timer/AllTasksViewController.swift"
+            timestampString = "611832079.753394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "AllTasksViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.dataAllDossier.getter : Swift.Array&lt;Swift.Array&lt;Swift.String&gt;&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832411.625577"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.dataAllDossier.setter : Swift.Array&lt;Swift.Array&lt;Swift.String&gt;&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832411.6258219"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.dataAllDossier.materializeForSet : Swift.Array&lt;Swift.Array&lt;Swift.String&gt;&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832411.625986"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.init (Timer.AllTasksViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Timer.AllTasksViewController"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832411.626151"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "209">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.init (Timer.AllTasksViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;Timer.AllTasksViewController&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832411.626307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "146">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Timer/AllTasksViewController.swift"
+            timestampString = "611832412.574244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "AllTasksViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.dataDossier.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832412.580416"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.dataDossier.setter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832412.580718"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.dataDossier.materializeForSet : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832412.580905"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.init (Timer.AllTasksViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Timer.AllTasksViewController"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832412.581085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Timer.AllTasksViewController.init (Timer.AllTasksViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;Timer.AllTasksViewController&gt;"
+                  moduleName = "Timer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Antoine/Desktop/projet/Timer/Timer/AllTasksViewController.swift"
+                  timestampString = "611832412.581269"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "189">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
