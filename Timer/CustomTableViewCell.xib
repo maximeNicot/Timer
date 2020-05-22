@@ -35,11 +35,19 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epx-xf-hOj">
+                        <rect key="frame" x="239" y="4" width="36" height="35"/>
+                        <state key="normal" title="Effacer" image="ImageCroixRougeEffacer"/>
+                        <connections>
+                            <action selector="effacerButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PCF-on-Kcy"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="boutonBrochure" destination="DO2-5G-0aL" id="fm0-jB-jOU"/>
                 <outlet property="boutonDroite" destination="DO2-5G-0aL" id="ly0-Jr-EYl"/>
+                <outlet property="effacerButton" destination="epx-xf-hOj" id="axB-yu-fEH"/>
                 <outlet property="imagePausePlay" destination="ZJZ-o4-PSI" id="Cfo-yz-d8M"/>
                 <outlet property="label" destination="gQR-DG-KHa" id="O5D-jo-LRr"/>
                 <outlet property="labelTimer" destination="FYK-Nw-3hs" id="cIA-hI-Xpe"/>
@@ -47,6 +55,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="ImageCroixRougeEffacer" width="800" height="800"/>
         <image name="ImagePlayBleu" width="600" height="600"/>
         <image name="ImageTriangle" width="512" height="512"/>
     </resources>

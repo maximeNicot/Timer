@@ -126,6 +126,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         cell.label.text = data[indexPath.row]
         
         cell.identifier = indexPath.row + 1000 + identifier
+        print("-----identifier cell table view-----")
+        print(cell.identifier)
         cell.starter()
         
         
@@ -157,8 +159,6 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         
         cell.delegate = self
         
-        // pour le total des dossiers
-        //totalChrono = totalChrono + cell.chrono
         
         if(editingBool){
             cell.editSensInterdit()

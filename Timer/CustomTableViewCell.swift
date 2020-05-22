@@ -33,12 +33,19 @@ class CustomTableViewCell: UITableViewCell {
     var isQuickStart = false
     
     
+    @IBOutlet weak var effacerButton: UIButton!
+    
+    @IBAction func effacerButtonClick(sender: AnyObject) {
+        
+        
+    }
     
     @IBOutlet weak var boutonDroite: UIButton!
    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        effacerButton.hidden = true
+        effacerButton.enabled = false
         labelTimer.text = String(chrono)
         
     }
@@ -57,6 +64,11 @@ class CustomTableViewCell: UITableViewCell {
         //labelTimer.text = String(chrono)
         afficherChronoFormat()
         
+    }
+    
+    func activerEffacerButton(){
+        effacerButton.hidden = !effacerButton.hidden
+        effacerButton.enabled = !effacerButton.enabled
     }
     
     func majChrono(){
@@ -129,7 +141,7 @@ class CustomTableViewCell: UITableViewCell {
         imagePausePlay.image = UIImage(named: "ImageTriangle")
     }
     
-    // enlever cette methode et utiliser une passe juste entre table view et view controller car dans tableView on obtient le total 
+    
     func actualiserChronoDossier(){
         var allChronoDuDossier = ""
         
@@ -140,8 +152,6 @@ class CustomTableViewCell: UITableViewCell {
             if (myDefaults.stringForKey("totalChrono" + String(2 + (100 * i))) != nil){
                 allChronoDuDossier = myDefaults.stringForKey("totalChrono" + String(2 + (100 * i)))!
                 myDefaults.setValue(allChronoDuDossier, forKey: "keyChrono" + String(7000 + i))
-                //labelTimer.text = allChronoDuDossier
-                
             }
         }
     }
@@ -149,14 +159,10 @@ class CustomTableViewCell: UITableViewCell {
     func actualiserChronoPageBlanche(){
         var allChronoPageBlanche = ""
         
-        //dataPageBlanche = dataPageBlancheDefaults.stringArrayForKey("keyPageBlanche")!
-        
         for i in 0...1{
             if (myDefaults.stringForKey("totalChrono" + String(1 + (100 * i))) != nil){
                 allChronoPageBlanche = myDefaults.stringForKey("totalChrono" + String(1 + (100 * i)))!
-                myDefaults.setValue(allChronoPageBlanche, forKey: "keyChrono" + String(8000 + i))
-                //labelTimer.text = allChronoDuDossier
-                
+                myDefaults.setValue(allChronoPageBlanche, forKey: "keyChrono" + String(8000 + i))                
             }
         }
     }

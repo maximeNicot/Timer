@@ -103,7 +103,8 @@ class EditController: UIViewController {
                 
                 //on veut pas append
                 data[identifierCell] = textField.text!
-                dataTimer[identifierCell] = "100"
+                
+                //dataTimer[identifierCell] = "0"
                
                 
                 

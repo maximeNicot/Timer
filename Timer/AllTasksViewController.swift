@@ -102,7 +102,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
     }
    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // + 1 pour singles tasks
+        // + 1 pour single tasks
         return dataDossier.count + 1
     }
     
@@ -120,8 +120,8 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         cell.starter()
         cell.label.text = dataAllDossier[indexPath.section][indexPath.row]
         
-        //dedois pas add timer donc sa bug ici
-        //cell.chrono = Int(dataAllDossierTimer[indexPath.section][indexPath.row])!
+        
+        cell.chrono = Int(dataAllDossierTimer[indexPath.section][indexPath.row])!
         
         cell.setChrono()
         

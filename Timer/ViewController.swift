@@ -30,13 +30,20 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     var dataQuickTaskDefaults = NSUserDefaults.standardUserDefaults()
     var dataQuickTaskTimerDefaults = NSUserDefaults.standardUserDefaults()
     
+    var effacerDossierEdit = false
     
+    var identifierCellEffacerChrono = -1
     //pour les segue de tableViewController
     var monTitre = ""
     var identifierTableViewController = 1
     // pour les segue de PopUpController
     var nomTask = ""
     
+    @IBAction func onClickEdit(sender: AnyObject) {
+        effacerDossierEdit = !effacerDossierEdit
+        parcourirEffacerButton()
+        tableView.reloadData()
+    }
     override func viewDidLoad() {
         
         let mailEnregistre = dataPageBlancheDefaults.stringForKey("mail_preference")
@@ -182,26 +189,55 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
-        if(currentCell.isQuickStart){
-            currentCell.activerTimer()
-        }
-        else if(currentCell.isDossier){
-            self.monTitre = currentCell.label.text!
+        
+        //Pour effacer les dossiers
+        if(effacerDossierEdit){
+            
+            print(dataDossier)
+            dataDossier.removeAtIndex(indexPath.row)
+            print(dataDossier)
+            effacerDossierEdit = !effacerDossierEdit
+            parcourirEffacerButton()
+            dataDossierDefaults.setValue(dataDossier, forKey: "keyDossier1")
+            
+            //Pour effacer a l'interieur des dossiers, les taches en meme temps
             self.identifierTableViewController = indexPath.row * 100 + indexPath.section //2
-            print(identifierTableViewController)
-            self.performSegueWithIdentifier("segueTableView", sender: self)
-        }
-        else if(currentCell.isPageBlanche){
-            self.monTitre = currentCell.label.text!
-            self.identifierTableViewController = indexPath.row * 200 + indexPath.section //1
-            print(identifierTableViewController)
-            if(self.monTitre == "All tasks"){
-                self.performSegueWithIdentifier("segueAllTasks", sender: self)
+            let dataTacheDossierEffacer = dataDossierDefaults.stringArrayForKey("keyData4" + String(identifierTableViewController))
+            //faut aussi effacer les chrono default de chaque cell
+            for i in 0...dataTacheDossierEffacer!.count{
+                identifierCellEffacerChrono = i + 1000 + identifierTableViewController
+                dataDossierDefaults.setValue(0, forKey: "keyChrono" + String(identifierCellEffacerChrono))
+                
             }
-            else{
+            dataDossierDefaults.setValue(0, forKey: "totalChrono" + String(identifierTableViewController))
+            
+            dataDossierDefaults.setValue([], forKey: "keyData4" + String(identifierTableViewController))
+            dataDossierDefaults.setValue([], forKey: "keyDataTimer4" + String(identifierTableViewController))
+            
+            tableView.reloadData()
+        }
+        else{
+            if(currentCell.isQuickStart){
+                currentCell.activerTimer()
+            }
+            else if(currentCell.isDossier){
+                self.monTitre = currentCell.label.text!
+                self.identifierTableViewController = indexPath.row * 100 + indexPath.section //2
+                print(identifierTableViewController)
                 self.performSegueWithIdentifier("segueTableView", sender: self)
             }
+            else if(currentCell.isPageBlanche){
+                self.monTitre = currentCell.label.text!
+                self.identifierTableViewController = indexPath.row * 200 + indexPath.section //1
+                print(identifierTableViewController)
+                if(self.monTitre == "All tasks"){
+                    self.performSegueWithIdentifier("segueAllTasks", sender: self)
+                }
+                else{
+                    self.performSegueWithIdentifier("segueTableView", sender: self)
+                }
             
+            }
         }
     }
     
@@ -215,6 +251,12 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 indice = indice + 1
             }
             
+        }
+    }
+    
+    func parcourirEffacerButton(){
+        for cell in tableView.visibleCells as! [CustomTableViewCell] {
+            cell.activerEffacerButton()
         }
     }
     

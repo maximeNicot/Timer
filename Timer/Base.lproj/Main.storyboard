@@ -311,9 +311,9 @@
                                                 <segue destination="FUV-rP-BsP" kind="show" identifier="segueTableViewAbout" id="Nkl-at-XlH"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="pG7-89-IXP">
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="fV0-aV-x8Q">
                                             <connections>
-                                                <segue destination="SPP-wy-Dsk" kind="show" identifier="seguePopUp" id="hJZ-PB-UVz"/>
+                                                <action selector="onClickEdit:" destination="BYZ-38-t0r" id="n2E-uK-0Nk"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
