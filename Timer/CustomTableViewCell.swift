@@ -36,8 +36,6 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var effacerButton: UIButton!
     
     @IBAction func effacerButtonClick(sender: AnyObject) {
-        
-        
     }
     
     @IBOutlet weak var boutonDroite: UIButton!

@@ -191,7 +191,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         //Pour effacer les dossiers
-        if(effacerDossierEdit){
+        if(effacerDossierEdit && currentCell.isDossier){
             
             print(dataDossier)
             dataDossier.removeAtIndex(indexPath.row)
@@ -209,6 +209,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 dataDossierDefaults.setValue(0, forKey: "keyChrono" + String(identifierCellEffacerChrono))
                 
             }
+            //pour que le total chrono soit aussi effacer
             dataDossierDefaults.setValue(0, forKey: "totalChrono" + String(identifierTableViewController))
             
             dataDossierDefaults.setValue([], forKey: "keyData4" + String(identifierTableViewController))
@@ -216,6 +217,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             tableView.reloadData()
         }
+            
         else{
             if(currentCell.isQuickStart){
                 currentCell.activerTimer()
@@ -256,7 +258,9 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     func parcourirEffacerButton(){
         for cell in tableView.visibleCells as! [CustomTableViewCell] {
-            cell.activerEffacerButton()
+            if(cell.isDossier){
+                cell.activerEffacerButton()
+            }
         }
     }
     
