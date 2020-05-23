@@ -28,32 +28,26 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
     
     var identifierPourBoucle = -1
     
-    
     var identifierSingleTask = 1
 
     @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setEditing(false, animated: false)
         
-        
         if(myDefaults.stringArrayForKey("keyDossier1") != nil){
             dataDossier = myDefaults.stringArrayForKey("keyDossier1")!
         }
-        
        
         if(myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask)) != nil){
-            
             data = myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask))!
-            
             dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSingleTask))!
-            
         }
-        //print(data)
+        
         myDefaults.setValue(data, forKey: "keyData4" + String(identifierSingleTask))
         myDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifierSingleTask))
-        
         
         //construction du data all dossier
         constructionAllDossier()
@@ -61,10 +55,10 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.reloadData()
     }
 
+    
     @IBAction func editClick(sender: AnyObject) {
         if(!editingBool){
             tableView.setEditing(true, animated: true)
@@ -82,13 +76,16 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
     //Header sections
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
+        
         if(section == 0){
             label.text = "Single Tasks"
         }
@@ -101,16 +98,18 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         return label
     }
    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // + 1 pour single tasks
         return dataDossier.count + 1
     }
     
+    
     //count
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (dataAllDossier[section].count)
-        
     }
+    
     
     //Creation cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -119,10 +118,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         cell.identifier = indexPath.row + 10000
         cell.starter()
         cell.label.text = dataAllDossier[indexPath.section][indexPath.row]
-        
-        
         cell.chrono = Int(dataAllDossierTimer[indexPath.section][indexPath.row])!
-        
         cell.setChrono()
         
         if(editingBool){
@@ -131,6 +127,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         else{
             cell.editTriangle()
         }
+        
         ancienSection = indexPath.section
         return cell
     }
@@ -138,29 +135,18 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
     
     // click sur cell entiere
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         if(!editingBool){
             currentCell.activerTimer()
         }
         else{
-            
         }
-        
     }
     
     
     // changement de cell edit
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        
-        //data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        //dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        
-        
-        //myDefaults.setValue(data, forKey: "keyData4" + String(identifier))
-        //myDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
-        
         print("Source : "  + String(sourceIndexPath.row) + " Destination : " + String(destinationIndexPath.row) )
         print("Source section : " + String(sourceIndexPath.section) + " Destination section : " + String(destinationIndexPath.section))
         
@@ -208,7 +194,6 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         myDefaults.setValue(dataDossierDestination, forKey: "keyData4" + String(identifierDestination))
         myDefaults.setValue(dataDossierDestinationTimer, forKey: "keyDataTimer4" + String(identifierDestination))
         
-        
         print("---------Dossier SOurce apres save----------")
         print(dataDossierSource)
         print("---------Dossier Destination apres save----------")
@@ -216,19 +201,21 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
         
         deplacementBool = true
         constructionAllDossier()
-        
     }
+    
     
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.None
     }
     
+    
     func constructionAllDossier(){
         dataAllDossier.removeAll()
         dataAllDossierTimer.removeAll()
+        
         for i in 0...dataDossier.count{
-            
             identifierPourBoucle = (2 + (i * 100)-100) // -100 pour le single task
+            
             if(i == 0){
                 data = myDefaults.stringArrayForKey("keyData4" + String(identifierSingleTask))!
                 dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierSingleTask))!
@@ -237,6 +224,7 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
                 data = myDefaults.stringArrayForKey("keyData4" + String(identifierPourBoucle))!
                 dataTimer = myDefaults.stringArrayForKey("keyDataTimer4" + String(identifierPourBoucle))!
             }
+            
             dataAllDossier.append(data)
             dataAllDossierTimer.append(dataTimer)
             myDefaults.setValue(dataAllDossier, forKey: "dataAllDossier")
@@ -249,5 +237,4 @@ class AllTasksViewController: UIViewController, UITableViewDelegate, UITableView
             print(dataAllDossierTimer.count)
         }
     }
-        
 }

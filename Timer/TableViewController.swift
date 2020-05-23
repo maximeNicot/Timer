@@ -31,18 +31,20 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     
     @IBOutlet weak var effacerTache: UIBarButtonItem!
     
+    
     @IBAction func effacerTacheOnClick(sender: AnyObject) {
         editEffacerTacheBool = !editEffacerTacheBool
         parcourirEffacerButton()
         tableView.reloadData()
     }
     
+    
     @IBAction func onMessage(sender: AnyObject) {
         mail()
     }
     
-    func mail(){
     
+    func mail(){
         let mailEnregistre = dataDefaults.stringForKey("mail_preference")
         if(mailEnregistre != nil){
             print("le mail enregistré est : " + mailEnregistre!)
@@ -61,14 +63,12 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             composer.setToRecipients([mailEnregistre!])
             composer.setSubject("Objet du mail")
             composer.setMessageBody("Le corps du mails", isHTML: false)
-        
             presentViewController(composer, animated: true, completion: nil)
         }
     }
     
-    
-    
     @IBOutlet var viewTable: UITableView!
+    
     
     @IBAction func editClick(sender: AnyObject) {
         if(!editingBool){
@@ -82,8 +82,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             editingBool = false
             tableView.reloadData()
         }
-        
     }
+    
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     
@@ -91,18 +91,15 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setEditing(false, animated: false)
-
-        
         navigationBar.topItem?.title = monTitre
-        //print("identifier" + String(identifier))
-        
+    
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
       
         if(dataDefaults.stringArrayForKey("keyData4" + String(identifier)) != nil){
         data = dataDefaults.stringArrayForKey("keyData4" + String(identifier))!
         dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer4" + String(identifier))!
-        
         }
+        
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
         
@@ -112,77 +109,69 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         print(dataTimer)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         let nbRow = dataTimerDefaults.stringArrayForKey("keyDataTimer4" + String(identifier))!.count
-        
         return (nbRow)
     }
 
+    
         // creation cell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
-        
-        
-       
-            cell.label.text = data[indexPath.row]
-        
-            cell.identifier = indexPath.row + 1000 + identifier
-            print("-----identifier cell table view-----")
-            print(cell.identifier)
-            cell.starter()
-        
-        
-        
-            if(deplacementBool){
-            
+        cell.label.text = data[indexPath.row]
+        cell.identifier = indexPath.row + 1000 + identifier
+        print("-----identifier cell table view-----")
+        print(cell.identifier)
+        cell.starter()
+     
+        if(deplacementBool){
+            cell.chrono = Int(dataTimer[indexPath.row])!
+            cell.setChrono()
+            cell.labelTimer.text = dataTimer[indexPath.row]
+        }
+        else{
+        //Pour bien envoyer le timer de la quick task dans la nouvelle du dossier
+            if(fromQuickStart){
                 cell.chrono = Int(dataTimer[indexPath.row])!
                 cell.setChrono()
-                cell.labelTimer.text = dataTimer[indexPath.row]
+                cell.afficherChronoFormat()
             }
             else{
-            //Pour bien envoyer le timer de la quick task dans la nouvelle du dossier
-                if(fromQuickStart){
-                    cell.chrono = Int(dataTimer[indexPath.row])!
-                    cell.setChrono()
-                    cell.afficherChronoFormat()
-                }
-                else{
-                    dataTimer[indexPath.row] = String(cell.chrono)
-                }
-            
-            
-            
+                dataTimer[indexPath.row] = String(cell.chrono)
             }
-            if(indexPath.row == 2){
-                deplacementBool = false
-            }
+        }
         
+        if(indexPath.row == 2){
+            deplacementBool = false
+        }
         
-            cell.delegate = self
-            if(editingBool){
-                cell.editSensInterdit()
-            }
-            else{
-                cell.editTriangle()
-            }
+        cell.delegate = self
+        
+        if(editingBool){
+            cell.editSensInterdit()
+        }
+        else{
+            cell.editTriangle()
+        }
         
         return cell
     }
     
+    
     //click sur une cell
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         if(editEffacerTacheBool){
@@ -199,12 +188,11 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             print(dataTimer)
             currentCell.effacerChronoSauvegarder()
             parcourirMajChrono()
-            
             tableView.reloadData()
-            
         }
         else {
             nomTache = currentCell.label.text!
+            
             if(!editingBool){
                 currentCell.activerTimer()
             }
@@ -212,10 +200,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
                 dataDefaults.setValue(currentCell.label.text, forKey: "labelTextCell")
                 identifierCellEditing = indexPath.item
                 self.performSegueWithIdentifier("segueEditController", sender: self)
-                
             }
         }
-        
     }
     
     
@@ -225,9 +211,7 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         print(identifier)
         parcourirTableView()
         dataDefaults.setValue(totalChrono, forKey: "totalChrono" + String(identifier))
-        
-        
-        
+    
         if(segue.identifier == "segueNewTask"){
             let vc = segue.destinationViewController as! NewTaskController
             vc.identifier = self.identifier
@@ -240,11 +224,8 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             vc.identifierTableView = self.identifier
             vc.fromQuickTask = false
             vc.fromTableView = true
-            
             dataDefaults.setValue(nomTache, forKey: "nomTask")
-            
         }
-        
     }
    
 
@@ -254,23 +235,23 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         }
     }
     
+    
     func parcourirMajChrono(){
         var indice = 0
         for cell in tableView.visibleCells as! [CustomTableViewCell] {
+            
             if(indice < dataTimer.count){
                 cell.chrono = Int(dataTimer[indice])!
                 cell.setChrono()
-                
             }
             if(indice == dataTimer.count){
                 print("goula")
                 cell.effacerChronoSauvegarder()
-                
             }
             indice = indice + 1
         }
-        
     }
+    
     
     func parcourirEffacerButton(){
         for cell in tableView.visibleCells as! [CustomTableViewCell] {
@@ -278,24 +259,21 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         }
     }
     
+    
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.None
     }
     
+    
     // Changement de cell edidting
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        
         data.insert(data.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         dataTimer.insert(dataTimer.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        
     
         dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
         dataTimerDefaults.setValue(dataTimer, forKey: "keyDataTimer4" + String(identifier))
-        
         deplacementBool = true
-        
         }
-    
     
     
     //protocol

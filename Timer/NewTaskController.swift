@@ -30,22 +30,19 @@ class NewTaskController: UIViewController {
     var dataTimer = [""]
     var dataDefaults = NSUserDefaults.standardUserDefaults()
     var dataTimerDefaults = NSUserDefaults.standardUserDefaults()
-    
     var projectTitre = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldProject.text = projectTitre
         data = dataDefaults.stringArrayForKey("keyData4" + String(identifier))!
         dataTimer = dataTimerDefaults.stringArrayForKey("keyDataTimer4" + String(identifier))!
-        
-        
-        // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -57,7 +54,5 @@ class NewTaskController: UIViewController {
         }
         else{
         }
-        
     }
-
 }

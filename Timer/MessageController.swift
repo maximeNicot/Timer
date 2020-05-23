@@ -17,9 +17,5 @@ class MessageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-    
     }
-    
-    
 }

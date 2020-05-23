@@ -20,15 +20,11 @@ class DatePickerController: UIViewController {
     var durationBool = false
     
     var previousDateStart = NSDate()
-    
     var previousDateEnd = NSDate()
-    
-    
     
     @IBOutlet weak var start: UITextField!
     @IBOutlet weak var end: UITextField!
     @IBOutlet weak var duration: UITextField!
-    
     @IBOutlet weak var datePicker: UIDatePicker!
     
    
@@ -37,30 +33,28 @@ class DatePickerController: UIViewController {
         datePicker.datePickerMode = UIDatePickerMode.DateAndTime
     }
     
+    
     @IBAction func durationOnClick(sender: AnyObject) {
         durationBool = true
         datePicker.datePickerMode = UIDatePickerMode.CountDownTimer
-       
-        
     }
   
     
     @IBAction func startOnClick(sender: AnyObject) {
-        
         startBool = true
     }
     
+    
     @IBAction func endOnClick(sender: AnyObject) {
-        
         endBool = true
-        
     }
+    
     
     @IBAction func startFinish(sender: AnyObject) {
         datePicker.setDate(previousDateEnd, animated: true)
         startBool = false
-        
     }
+    
     
     @IBAction func endFinish(sender: AnyObject) {
         datePicker.setDate(previousDateStart, animated: true)
@@ -69,10 +63,8 @@ class DatePickerController: UIViewController {
     }
     
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         }
 
 
@@ -83,29 +75,17 @@ class DatePickerController: UIViewController {
         let formattedDate = format.stringFromDate(date)
         
         if(startBool){
-            
             start.text = formattedDate
             previousDateStart = datePicker.date
-            
         }
         if(endBool){
-            
             end.text = formattedDate
             previousDateEnd = datePicker.date
-            
         }
         if(durationBool){
             let entier = floor(datePicker.countDownDuration/3600)
             let decimal = ((datePicker.countDownDuration/3600 - floor(datePicker.countDownDuration/3600)) * 60)/100
             duration.text =  String(entier + decimal)
-         
         }
-        
-        
-        
-        
     }
-    
-    
-    
 }

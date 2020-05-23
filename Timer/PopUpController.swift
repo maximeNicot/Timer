@@ -9,7 +9,6 @@
 import UIKit
 
 class PopUpController: UIViewController {
-
     
     var dataQuickTask = [String]()
     var dataQuickTaskTimer = [String]()
@@ -18,15 +17,13 @@ class PopUpController: UIViewController {
     
     var identifierCell = -1
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         dataQuickTask = myDefaults.stringArrayForKey("keyQuickTask3")!
         dataQuickTaskTimer = myDefaults.stringArrayForKey("keyQuickTaskTimer3")!
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,12 +31,9 @@ class PopUpController: UIViewController {
     
 
     @IBAction func CreateNewTask(sender: AnyObject) {
-        
         myDefaults.setValue(dataQuickTask[identifierCell-10000], forKey: "nomTask")
-        //myDefaults.setValue(dataQuickTask[identifierCell-10000], forKey: "timerQuickTaskUnique")
-        
-        
     }
+    
     
     @IBAction func AddToTask(sender: AnyObject) {
     }
@@ -48,8 +42,7 @@ class PopUpController: UIViewController {
     @IBAction func Delete(sender: AnyObject) {
         dataQuickTask.removeAtIndex(identifierCell-10000)
         dataQuickTaskTimer.removeAtIndex(identifierCell-10000)
-        
-        
+    
         myDefaults.setValue(dataQuickTask, forKey: "keyQuickTask3")
         myDefaults.setValue(dataQuickTaskTimer, forKey: "keyQuickTaskTimer3")
         
@@ -69,5 +62,4 @@ class PopUpController: UIViewController {
             vc.identifierCell = identifierCell
         }
     }
-
 }

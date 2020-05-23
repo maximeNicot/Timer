@@ -21,7 +21,6 @@ class BrochureController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.registerNib(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.reloadData()
         
     }
@@ -32,28 +31,23 @@ class BrochureController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-  
-    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     
+    
     //Creation cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         
         cell.label.text = data[indexPath.row]
         return cell
-        
     }
-    
-
-
 }
