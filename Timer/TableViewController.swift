@@ -195,8 +195,10 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
             dataDefaults.setValue(data, forKey: "keyData4" + String(identifier))
             dataTimerDefaults.setValue(data, forKey: "keyDataTimer4" + String(identifier))
             
+            print("------Timer apres suppression----")
+            print(dataTimer)
             currentCell.effacerChronoSauvegarder()
-            
+            parcourirMajChrono()
             
             tableView.reloadData()
             
@@ -250,6 +252,24 @@ class TableViewController: UITableViewController,MFMailComposeViewControllerDele
         for cell in tableView.visibleCells as! [CustomTableViewCell] {
             totalChrono = totalChrono + cell.chrono
         }
+    }
+    
+    func parcourirMajChrono(){
+        var indice = 0
+        for cell in tableView.visibleCells as! [CustomTableViewCell] {
+            if(indice < dataTimer.count){
+                cell.chrono = Int(dataTimer[indice])!
+                cell.setChrono()
+                
+            }
+            if(indice == dataTimer.count){
+                print("goula")
+                cell.effacerChronoSauvegarder()
+                
+            }
+            indice = indice + 1
+        }
+        
     }
     
     func parcourirEffacerButton(){
