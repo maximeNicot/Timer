@@ -176,7 +176,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSG-Fu-fGV">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="+" id="kkd-eR-xj6">
+                                    <barButtonItem title="AjouterHeure" id="kkd-eR-xj6">
                                         <connections>
                                             <segue destination="YJD-5E-ciC" kind="show" id="ztg-fq-46r"/>
                                         </connections>
@@ -744,9 +744,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wUo-Ox-rdX"/>
         <segue reference="OQh-9r-ExT"/>
-        <segue reference="Mqd-vQ-m2B"/>
+        <segue reference="wUo-Ox-rdX"/>
         <segue reference="gfY-UL-lSn"/>
+        <segue reference="K3k-2x-s1A"/>
     </inferredMetricsTieBreakers>
 </document>
